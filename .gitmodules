@@ -1,0 +1,6 @@
+[submodule "data-original"]
+	path = data-original
+	url = git@github.com:simaonogueira101/winning-data-original.git
+[submodule "data-anonymized"]
+	path = data-anonymized
+	url = git@github.com:simaonogueira101/winning-data-anonymized.git
