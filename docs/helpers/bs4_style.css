@@ -1,7 +1,11 @@
-.thesis-cover img {
-  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+.welcome-highlight {
+  font-size: 1.2rem;
 }
 
-.bg-primary {
-  background-color: #182D59 !important;
+.thesis-cover img {
+  border: solid 2px #f1f1f1;
+}
+
+#content {
+  font-size: 1rem !important;
 }

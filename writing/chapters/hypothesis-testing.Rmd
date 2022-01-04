@@ -11,7 +11,17 @@ $$ Performance_i = \beta_0 + \beta  X_i + \epsilon_i $$
 
 \onehalfspacing
 
-```{r, results="asis"}
+```{r acccompanyperformanceaccdesign, results="asis", fig.cap="Accelerator Company Performance and Accelerator Program Design Variables."}
+
+title <- knitr::opts_current$get("fig.cap")
+title_html <- paste0(
+  '<span id="tab:',
+  knitr::opts_current$get("label"),
+  '">(#tab:',
+  knitr::opts_current$get("label"),
+  ')</span>',
+  title
+)
 
 p_acc_company_performance_acc_design_m1 <- pf(
   summary(acc_company_performance_acc_design_m1)$fstatistic[1],
@@ -47,7 +57,7 @@ stargazer(
   acc_company_performance_acc_design_m3,
   acc_company_performance_acc_design_m4,
   type = table_output,
-  title = "Accelerator Company Performance and Accelerator Program Design Variables.",
+  title = ifelse(knitr::is_latex_output(), title, title_html),
   header = FALSE,
   dep.var.labels = if(knit_type == "latex"){acc_company_performance_lm_verbose} else {acc_company_performance_lm_verbose_html},
   covariate.labels = if(knit_type == "latex"){acc_design_choices_complete_verbose} else {acc_design_choices_complete_verbose_html},
@@ -75,7 +85,7 @@ stargazer(
       p_acc_company_performance_acc_design_m4
     )
   ),
-  label = "tab:acccompanyperformanceaccdesign",
+  label = paste0("tab:", knitr::opts_current$get("label")),
   table.placement = 'H'
 )
 

@@ -82,14 +82,24 @@ education_services <- round(education_services / acc_industry_clusters_df$Freq %
 
 &nbsp;
 
-```{r accvars, results="asis"}
+```{r accvars, results="asis", fig.cap="Accelerator Program Design Variables: Summary Statistics."}
+
+title <- knitr::opts_current$get("fig.cap")
+title_html <- paste0(
+  '<span id="tab:',
+  knitr::opts_current$get("label"),
+  '">(#tab:',
+  knitr::opts_current$get("label"),
+  ')</span>',
+  title
+)
 
 stargazer(
   acc_design_choices_desc %>% mutate(
     funding_provided = funding_provided / 1000
   ),
   type = table_output,
-  title = "Accelerator Program Design Variables: Summary Statistics.",
+  title = ifelse(knitr::is_latex_output(), title, title_html),
   header = FALSE,
   covariate.labels = if(knit_type == "latex"){acc_design_choices_verbose} else {acc_design_choices_verbose_html},
   single.row = TRUE,
@@ -97,7 +107,7 @@ stargazer(
   column.sep.width = "1pt",
   no.space = TRUE,
   omit.summary.stat = c("p25", "p75"),
-  label = "tab:accvars",
+  label = paste0("tab:", knitr::opts_current$get("label")),
   table.placement = 'H'
 )
 
@@ -123,12 +133,22 @@ There are other components that make up the design of an accelerator program, co
 
 \onehalfspacing
 
-```{r, results="asis"}
+```{r mdbackgroundsdesc, results="asis", fig.cap="Accelerator Founding Managing Director Backgrounds: Summary Statistics."}
+
+title <- knitr::opts_current$get("fig.cap")
+title_html <- paste0(
+  '<span id="tab:',
+  knitr::opts_current$get("label"),
+  '">(#tab:',
+  knitr::opts_current$get("label"),
+  ')</span>',
+  title
+)
 
 stargazer(
   md_backgrounds_desc,
   type = table_output,
-  title = "Accelerator Founding Managing Director Backgrounds: Summary Statistics.",
+  title = ifelse(knitr::is_latex_output(), title, title_html),
   header = FALSE,
   covariate.labels = md_backgrounds_verbose,
   single.row = TRUE,
@@ -136,22 +156,36 @@ stargazer(
   column.sep.width = "1pt",
   no.space = TRUE,
   omit.summary.stat = c("p25", "p75"),
-  label = "tab:mdbackgroundsdesc",
+  label = paste0("tab:", knitr::opts_current$get("label")),
   table.placement = 'H'
+)
+
+```
+
+```{r mdbackgroundscorr, results="asis", fig.cap="Accelerator Founding Managing Director Backgrounds: Correlation."}
+
+title <- knitr::opts_current$get("fig.cap")
+title_html <- paste0(
+  '<span id="tab:',
+  knitr::opts_current$get("label"),
+  '">(#tab:',
+  knitr::opts_current$get("label"),
+  ')</span>',
+  title
 )
 
 stargazer(
   md_backgrounds_corr,
   summary = FALSE,
   type = table_output,
-  title = "Accelerator Founding Managing Director Backgrounds: Correlation.",
+  title = ifelse(knitr::is_latex_output(), title, title_html),
   header = FALSE,
   single.row = TRUE,
   font.size = table_font_size,
   column.sep.width = "1pt",
   no.space = TRUE,
   notes="\\textit{Note:} *p<0.1; **p<0.05; ***p<0.01",
-  label = "tab:mdbackgroundscorr",
+  label = paste0("tab:", knitr::opts_current$get("label")),
   table.placement = 'H'
 )
 
@@ -172,12 +206,22 @@ Founders with prior experience as investors are the least likely to be closely r
 
 \onehalfspacing
 
-```{r, results="asis"}
+```{r foundingsponsorsdesc, results="asis", fig.cap="Accelerator Founding Sponsors: Summary Statistics."}
+
+title <- knitr::opts_current$get("fig.cap")
+title_html <- paste0(
+  '<span id="tab:',
+  knitr::opts_current$get("label"),
+  '">(#tab:',
+  knitr::opts_current$get("label"),
+  ')</span>',
+  title
+)
 
 stargazer(
   founding_sponsors_desc,
   type = table_output,
-  title = "Accelerator Founding Sponsors: Summary Statistics.",
+  title = ifelse(knitr::is_latex_output(), title, title_html),
   header = FALSE,
   covariate.labels = founding_sponsors_verbose,
   single.row = TRUE,
@@ -185,22 +229,36 @@ stargazer(
   column.sep.width = "1pt",
   no.space = TRUE,
   omit.summary.stat = c("p25", "p75"),
-  label = "tab:foundingsponsorsdesc",
+  label = paste0("tab:", knitr::opts_current$get("label")),
   table.placement = 'H'
+)
+
+```
+
+```{r foundingsponsorscorr, results="asis", fig.cap="Accelerator Founding Sponsors: Correlation."}
+
+title <- knitr::opts_current$get("fig.cap")
+title_html <- paste0(
+  '<span id="tab:',
+  knitr::opts_current$get("label"),
+  '">(#tab:',
+  knitr::opts_current$get("label"),
+  ')</span>',
+  title
 )
 
 stargazer(
   founding_sponsors_corr,
   summary = FALSE,
   type = table_output,
-  title = "Accelerator Founding Sponsors: Correlation.",
+  title = ifelse(knitr::is_latex_output(), title, title_html),
   header = FALSE,
   single.row = TRUE,
   font.size = table_font_size,
   column.sep.width = "1pt",
   no.space = TRUE,
   notes="\\textit{Note:} *p<0.1; **p<0.05; ***p<0.01",
-  label = "tab:foundingsponsorscorr",
+  label = paste0("tab:", knitr::opts_current$get("label")),
   table.placement = 'H'
 )
 
@@ -235,7 +293,17 @@ Our sample of startups has `r nrow(acc_company_performance_desc)` complete obser
 
 \onehalfspacing
 
-```{r, results="asis"}
+```{r acccompanyperformancedesc, results="asis", fig.cap="Accelerator Company Performance: Summary Statistics."}
+
+title <- knitr::opts_current$get("fig.cap")
+title_html <- paste0(
+  '<span id="tab:',
+  knitr::opts_current$get("label"),
+  '">(#tab:',
+  knitr::opts_current$get("label"),
+  ')</span>',
+  title
+)
 
 stargazer(
   acc_company_performance_desc %>% mutate(
@@ -243,7 +311,7 @@ stargazer(
     max_valuation = max_valuation / 1000000
   ),
   type = table_output,
-  title = "Accelerator Company Performance: Summary Statistics.",
+  title = ifelse(knitr::is_latex_output(), title, title_html),
   header = FALSE,
   covariate.labels = if(knit_type == "latex"){acc_company_performance_verbose} else {acc_company_performance_verbose_html},
   single.row = TRUE,
@@ -251,7 +319,7 @@ stargazer(
   column.sep.width = "1pt",
   no.space = TRUE,
   omit.summary.stat = c("p25", "p75"),
-  label = "tab:acccompanyperformancedesc",
+  label = paste0("tab:", knitr::opts_current$get("label")),
   table.placement = 'H'
 )
  
@@ -403,7 +471,17 @@ Although this model does not by itself configure a well- or ill-designed acceler
 
 \onehalfspacing
 
-```{r, results="asis"}
+```{r accsponmdback, results="asis", fig.cap="Accelerator Founding Sponsors and Accelerator Founding Managing Director Backgrounds."}
+
+title <- knitr::opts_current$get("fig.cap")
+title_html <- paste0(
+  '<span id="tab:',
+  knitr::opts_current$get("label"),
+  '">(#tab:',
+  knitr::opts_current$get("label"),
+  ')</span>',
+  title
+)
 
 stargazer(
   acc_spon_md_back_m1,
@@ -411,7 +489,7 @@ stargazer(
   acc_spon_md_back_m3,
   acc_spon_md_back_m4,
   type = table_output,
-  title = "Accelerator Founding Sponsors and Accelerator Founding Managing Director Backgrounds.",
+  title = ifelse(knitr::is_latex_output(), title, title_html),
   header = FALSE,
   dep.var.labels = founding_sponsors_verbose,
   covariate.labels = md_backgrounds_verbose,
@@ -430,7 +508,7 @@ stargazer(
   } else {
     "This table utilizes probit regression to measure the association between accelerator founding sponsors and accelerator founding managing director backgrounds."
   },
-  label = "tab:accsponmdback",
+  label = paste0("tab:", knitr::opts_current$get("label")),
   table.placement = 'H'
 )
 
@@ -448,7 +526,17 @@ As previously theorized by @tripathi_startup_2019, accelerator performance can o
 
 \onehalfspacing
 
-```{r, results="asis"}
+```{r mdbackaccdesign, results="asis", fig.cap="Background of Accelerator Founding Managing Directors Backgrounds and Accelerator Program Design Variables."}
+
+title <- knitr::opts_current$get("fig.cap")
+title_html <- paste0(
+  '<span id="tab:',
+  knitr::opts_current$get("label"),
+  '">(#tab:',
+  knitr::opts_current$get("label"),
+  ')</span>',
+  title
+)
 
 stargazer(
   md_back_acc_design_m1,
@@ -456,7 +544,7 @@ stargazer(
   md_back_acc_design_m3,
   md_back_acc_design_m4,
   type = table_output,
-  title = "Background of Accelerator Founding Managing Directors Backgrounds and Accelerator Program Design Variables.",
+  title = ifelse(knitr::is_latex_output(), title, title_html),
   header = FALSE,
   dep.var.labels = md_backgrounds_verbose,
   covariate.labels = if(knit_type == "latex"){acc_design_choices_verbose} else {acc_design_choices_verbose_html},
@@ -475,7 +563,7 @@ stargazer(
   } else {
     "This table utilizes multiple linear regression to measure the association between accelerator founding managing director backgrounds and accelerator program design choices."
   },
-  label = "tab:mdbackaccdesign",
+  label = paste0("tab:", knitr::opts_current$get("label")),
   table.placement = 'H'
 )
 
@@ -493,7 +581,17 @@ Accelerators providing startups with physical workspace or a co-working office f
 
 \onehalfspacing
 
-```{r, results="asis"}
+```{r accsponaccdesign, results="asis", fig.cap="Accelerator Founding Sponsors and Accelerator Program Design Variables."}
+
+title <- knitr::opts_current$get("fig.cap")
+title_html <- paste0(
+  '<span id="tab:',
+  knitr::opts_current$get("label"),
+  '">(#tab:',
+  knitr::opts_current$get("label"),
+  ')</span>',
+  title
+)
 
 stargazer(
   acc_spon_acc_design_m1,
@@ -501,7 +599,7 @@ stargazer(
   acc_spon_acc_design_m3,
   acc_spon_acc_design_m4,
   type = table_output,
-  title = "Accelerator Founding Sponsors and Accelerator Program Design Variables.",
+  title = ifelse(knitr::is_latex_output(), title, title_html),
   header = FALSE,
   dep.var.labels = founding_sponsors_verbose,
   covariate.labels = if(knit_type == "latex"){acc_design_choices_verbose} else {acc_design_choices_verbose_html},
@@ -520,7 +618,7 @@ stargazer(
   } else {
     "This table utilizes multiple linear regression to measure the association between accelerator founding sponsors and accelerator program design choices." 
   },
-  label = "tab:accsponaccdesign",
+  label = paste0("tab:", knitr::opts_current$get("label")),
   table.placement = 'H'
 )
 
@@ -534,15 +632,25 @@ Opposite to the previous model, accelerators with a focused cohort have a higher
 
 \onehalfspacing
 
-\begin{minipage}{0.48\textwidth}
-```{r echo=FALSE, results='asis'}
+`r if(knit_type == "latex"){"\\begin{minipage}{0.48\\textwidth}"}`
+```{r illdesigneddf, results='asis', fig.cap="Ill-Designed Accelerator: Summary Statistics."}
+
+title <- knitr::opts_current$get("fig.cap")
+title_html <- paste0(
+  '<span id="tab:',
+  knitr::opts_current$get("label"),
+  '">(#tab:',
+  knitr::opts_current$get("label"),
+  ')</span>',
+  title
+)
 
 stargazer(
   ill_designed_df %>% mutate(
     funding_provided = funding_provided / 1000
   ),
   type = table_output,
-  title = "Ill-Designed Accelerator: Summary Statistics.",
+  title = ifelse(knitr::is_latex_output(), title, title_html),
   header = FALSE,
   covariate.labels = if(knit_type == "latex"){acc_design_choices_complete_verbose} else {acc_design_choices_complete_verbose_html},
   single.row = TRUE,
@@ -550,22 +658,32 @@ stargazer(
   column.sep.width = "1pt",
   no.space = TRUE,
   omit.summary.stat = c("n", "p25", "p75"),
-  label = "tab:illdesigneddf",
+  label = paste0("tab:", knitr::opts_current$get("label")),
   table.placement = 'H'
 )
 
 ```
-\end{minipage}
-\qquad
-\begin{minipage}{0.45\textwidth}
-```{r echo=FALSE, results='asis'}
+`r if(knit_type == "latex"){"\\end{minipage}"}`
+`r if(knit_type == "latex"){"\\qquad"}`
+`r if(knit_type == "latex"){"\\begin{minipage}{0.45\\textwidth}"}`
+```{r welldesigneddf, results='asis', fig.cap="Well-Designed Accelerator: Summary Statistics."}
+
+title <- knitr::opts_current$get("fig.cap")
+title_html <- paste0(
+  '<span id="tab:',
+  knitr::opts_current$get("label"),
+  '">(#tab:',
+  knitr::opts_current$get("label"),
+  ')</span>',
+  title
+)
 
 stargazer(
   well_designed_df %>% mutate(
     funding_provided = funding_provided / 1000
   ),
   type = table_output,
-  title = "Well-Designed Accelerator: Summary Statistics.",
+  title = ifelse(knitr::is_latex_output(), title, title_html),
   header = FALSE,
   covariate.labels = if(knit_type == "latex"){acc_design_choices_complete_verbose} else {acc_design_choices_complete_verbose_html},
   single.row = TRUE,
@@ -573,12 +691,12 @@ stargazer(
   column.sep.width = "1pt",
   no.space = TRUE,
   omit.summary.stat = c("n", "p25", "p75"),
-  label = "tab:welldesigneddf",
+  label = paste0("tab:", knitr::opts_current$get("label")),
   table.placement = 'H'
 )
 
 ```
-\end{minipage}
+`r if(knit_type == "latex"){"\\end{minipage}"}`
 
 &nbsp;
 

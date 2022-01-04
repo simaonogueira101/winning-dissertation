@@ -90,10 +90,7 @@ chapters = switch(
     knit_type,  
     "latex" = c(
       # Cover
-      "./writing/chapters/frontpage.Rmd",
-      
-      # Acknowledgments
-      "./writing/chapters/acknowledgments.Rmd"
+      "./writing/chapters/frontpage.Rmd"
     ),
     
     "html" = c(
@@ -104,6 +101,9 @@ chapters = switch(
 
 chapters <- c(
   chapters,
+  
+  # Acknowledgments
+  "./writing/chapters/acknowledgments.Rmd",
   
   # Abstracts
   "./writing/chapters/abstract.Rmd",
