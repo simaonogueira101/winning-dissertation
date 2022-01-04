@@ -1,0 +1,29 @@
+\clearpage
+
+# Introduction
+
+## The European Ecosystem, Its Startups, and Accelerators
+
+Startups fail - a lot. As many as 9 out of every 10 will not accomplish the goals they set out to achieve [@nobel_companies_2011]. Understanding the mechanisms behind failure is necessarily relevant, but so is finding strategies to combat this lack of success and accelerate innovation in a range of ecosystems. Entrepreneurs, managers, venture capitalists, and policymakers have long pursued this target [@barbero_different_2014; @colombelli_be_2016] and have found business incubators and similar vehicles to be ideal facilitators for the early-stage development of startups [@hackett_systematic_2004] and as a source of sustainable value creation [@colombelli_be_2016].
+
+Moreover, the exponential growth in the number of startup accelerators and incubators in recent years and the ever-changing founder and company needs have created opportunities for researchers who now try to understand these phenomena. Nevertheless, "startups at the youngest stages of development have long been invisible to researchers" [@cohen_design_2019]. With this in mind, current literature discloses three areas of interest surrounding startup accelerators as a subset of startup incubators, namely on their definitions and typologies, on the process which the cohort goes through, and on the performance and impact of the programs [@hausberg_business_2020].
+
+Europe reached record levels of growth and investment in 2021. "With a record \$100B of capital invested, 98 new unicorns, and the strongest ever startup pipeline", the European region is comparable with the United States of America (USA) in many metrics, only lacking behind in ecosystem maturity [@european_tech_2021].
+
+This dissertation will uncover how the different components that make up a European acceleration program play a part in the success of young startups, following the steps of research conducted in the USA that has shown "clear patterns of association between design choices and (startup) performance" [@cohen_design_2019]. Through a collection of data points over a large number of accelerators and startups in the region, quantitative statistical analysis with regression models was conducted, paving the way to understand existing correlation mechanisms and relationships between program design variables and company performance metrics. This wealth of data is, in turn, converted into a broad definition of ill- and well-designed accelerator. The resulting evidence allows managers to make informed decisions on how to structure an incubator's acceleration program and proves - to a certain extent - that accelerators impact the success of incubated startups.
+
+## Researcher Background
+
+Portugal is often referred to as the Silicon Valley of Europe [@dinheiro_vivo_2019]. The year-round good weather, ecosystem, and hospitality make it a breeding ground for promising startups which, every year, meet at Web Summit to share knowledge and experience the comparably pleasant Night Summit. The writer of this dissertation currently heads operations at [Nest Collective](https://nestcollective.co), a collective of digital product studios with a distinct model for company collaboration and incubation in the central region of the country. Having been part of the entrepreneurial ecosystem for the last quarter of their life, their perception of the growth potential for business incubators was made clear by their participation in several student-run organizations, software, and design consulting agencies and startups.
+
+Questioning themselves as to what could be the next strategic step for the incubator, the generational timeline proposed by @bruneel_evolution_2012 prompted the author to consider startup acceleration as Nest Collective's next endeavour. Understanding "innovative ventures exhibit higher survival rates" and that certain "circumstances that facilitate the formation of innovative start-ups and the survival of young innovative firms" [@colombelli_be_2016] may be - to a certain extent - the responsibility of managers and directors of these ecosystems, the author proposes a study which has the opportunity of assisting them and others in making data-backed decisions for more successful acceleration programs and, in consequence, higher-achieving startups with reduced failure rates.
+
+## Problem Statement
+
+With the end goal of suggesting a set of managerial and theoretical implications, the aim of this thesis is twofold: firstly, to understand the impact of a European acceleration program's design features on the success metrics of its accelerated startups, and, secondly, to propose and verify a data-based definition of well- and ill-designed accelerator. The problem statement can be defined as: The impact of startup accelerator program design variables in a graduated startup's chance of success in the European context.
+
+In answering the above problem statement, two research questions and corresponding hypotheses for testing were crafted and analyzed under quantitative, statistical models. The research questions (RQ) are:
+
+-   RQ1: Do accelerator program design variables affect a graduated startup's chance of success?
+
+-   RQ2: Are there performance differences between startups who graduated from ill- and well-designed accelerator programs?

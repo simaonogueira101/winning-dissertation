@@ -1,0 +1,219 @@
+## Hypothesis Testing
+
+We began this dissertation by asserting the end goal: to understand the impact of startup accelerator program design variables in a graduated startup's chance of success in the European context. This chapter is dedicated to providing answers to our research questions  - RQ1 and RQ2 - employing tests of hypothesis.
+
+### Hypothesis 1, H~0~: There Is No Significant Impact of an Accelerator's Design Variables on the Performance Indicators of Its Accelerated Startups. {#hypothesis1}
+The first hypothesis aims to clarify the impact of each accelerator variable on the outcome of accelerated startups, in answering RQ1 “Do accelerator program design variables affect a graduated startup's chance of success?". To interpret these associations, multiple linear regression models were implemented: one for each indicator. These models have performance metrics as the dependent variable and an array of design elements as the independent variables (reported in Table \@ref(tab:acccompanyperformanceaccdesign)). The formula goes as follows, where $\beta_0$ is our constant, the intercept, $\beta  X_i$ i are the regression coefficients applied to a vector of design choices and $\epsilon_i$ is the error term:
+
+$$ Performance_i = \beta_0 + \beta  X_i + \epsilon_i $$
+
+&nbsp;
+
+\onehalfspacing
+
+```{r, results="asis"}
+
+p_acc_company_performance_acc_design_m1 <- pf(
+  summary(acc_company_performance_acc_design_m1)$fstatistic[1],
+  summary(acc_company_performance_acc_design_m1)$fstatistic[2],
+  summary(acc_company_performance_acc_design_m1)$fstatistic[3],
+  lower.tail = FALSE
+) %>% round(3)
+
+p_acc_company_performance_acc_design_m2 <- pf(
+  summary(acc_company_performance_acc_design_m2)$fstatistic[1],
+  summary(acc_company_performance_acc_design_m2)$fstatistic[2],
+  summary(acc_company_performance_acc_design_m2)$fstatistic[3],
+  lower.tail = FALSE
+) %>% round(3)
+
+p_acc_company_performance_acc_design_m3 <- pf(
+  summary(acc_company_performance_acc_design_m3)$fstatistic[1],
+  summary(acc_company_performance_acc_design_m3)$fstatistic[2],
+  summary(acc_company_performance_acc_design_m3)$fstatistic[3],
+  lower.tail = FALSE
+) %>% round(3)
+
+p_acc_company_performance_acc_design_m4 <- pf(
+  summary(acc_company_performance_acc_design_m4)$fstatistic[1],
+  summary(acc_company_performance_acc_design_m4)$fstatistic[2],
+  summary(acc_company_performance_acc_design_m4)$fstatistic[3],
+  lower.tail = FALSE
+) %>% round(3)
+
+stargazer(
+  acc_company_performance_acc_design_m1,
+  acc_company_performance_acc_design_m2,
+  acc_company_performance_acc_design_m3,
+  acc_company_performance_acc_design_m4,
+  type = table_output,
+  title = "Accelerator Company Performance and Accelerator Program Design Variables.",
+  header = FALSE,
+  dep.var.labels = if(knit_type == "latex"){acc_company_performance_lm_verbose} else {acc_company_performance_lm_verbose_html},
+  covariate.labels = if(knit_type == "latex"){acc_design_choices_complete_verbose} else {acc_design_choices_complete_verbose_html},
+  single.row = TRUE,
+  font.size = table_font_size,
+  omit.stat = c("f", "adj.rsq", "ser", "aic"), 
+  column.sep.width = "1pt",
+  no.space = TRUE,
+  notes.align = "l",
+  notes = if(knit_type == "latex"){
+    c(
+      "This table utilizes multiple linear regression to measure the association ",
+      "between accelerator company performance and accelerator program design ",
+      "choices."
+    )
+  } else {
+    "This table utilizes multiple linear regression to measure the association between accelerator company performance and accelerator program design choices."
+  },
+  add.lines = list(
+    c(
+      "Regression P-value",
+      p_acc_company_performance_acc_design_m1,
+      p_acc_company_performance_acc_design_m2,
+      p_acc_company_performance_acc_design_m3,
+      p_acc_company_performance_acc_design_m4
+    )
+  ),
+  label = "tab:acccompanyperformanceaccdesign",
+  table.placement = 'H'
+)
+
+m4pvalue <- summary(acc_company_performance_acc_design_m4)$fstatistic
+m4pvalue <- pf(m4pvalue[1],m4pvalue[2],m4pvalue[3],lower.tail=F)
+
+```
+
+\setstretch{1.5}
+
+The dependent variables “Received > \$500K within 1 year” and “Exit of \$1M or More” are binary, taking up the values 0 or 1, when true or false, respectively. “Total Raised” and “Max Valuation” variables were logged to account for skewness (as described in Section \@ref(analysisstartups)). Independent variables are either discrete (“Program Duration” in number of weeks, “Funding Provided” in amount, “Equity Taken” in percentage, and “Cohort Size” in number of startups) or binary (with values 0 or 1, false or true, respectively): “Investor Sponsor”, “Corporation Sponsor”, “Government Sponsor”, “Academia Sponsor”, “Prior Investor Exp.”, “Prior Entrepreneur Exp.”, “Prior Corporate Exp.”, “Prior Academic Exp.”, “Focused Cohort Composition”, “Provides External Mentors”, “Provides Workspace”, “Provides Formal Education”, and “Graduation Event”.
+
+#### Received > \$500K within 1 year
+
+Multiple linear regressions were modelled for each dependent variable. In this case, we are trying to understand the impact of each startup design variable in their results the year following graduation from the acceleration program. Accelerators are meant to be a way to fast-track learning and market-fit for early-stage projects and companies and their completion is oftentimes signalled by a graduation event - a demo day. This event joins founders with other entrepreneurs and investors and is a great opportunity to start or continue work on the next rounds of investment.
+
+Results for the regression with the “Received > \$500K within 1 year” dependent variable (1) were shown to be significant, with a p-value < 0.01. We can therefore reject the null hypothesis and state that the design elements of accelerators have an impact on the probability of their cohort participants raising more than $500K in the year after completing the program. It is now important to identify the type of impact each element produces.
+
+With the exception of Academia Sponsors ($\beta$ = `r round(summary(acc_company_performance_acc_design_m1)$coefficients[5], 3)`, p-value < 0.05), all other Sponsor types (Investor, Corporation, and Government) had a positive coefficient ($\beta$ = `r round(summary(acc_company_performance_acc_design_m1)$coefficients[2], 3)`, p-value < 0.1; $\beta$ = `r round(summary(acc_company_performance_acc_design_m1)$coefficients[3], 3)`; p-value < 0.01, $\beta$ = `r round(summary(acc_company_performance_acc_design_m1)$coefficients[4], 3)`, p-value < 0.01, respectively) meaning that, all other variables constant, a positive change in value for Sponsors will increase the chance of achieving the threshold of the indicator under analysis.
+
+As for accelerator managing directors and founders, results vary. Those with an investment background have a small but positive impact ($\beta$ = `r round(summary(acc_company_performance_acc_design_m1)$coefficients[6], 3)`, p-value < 0.01) and so do those with corporate experience, with a slightly larger coefficient ($\beta$ = 0.103, p-value < 0.01). Managers who had previously founded other ventures had a negative impact on this indicator ($\beta$ = `r round(summary(acc_company_performance_acc_design_m1)$coefficients[7], 3)`, p-value < 0.01). No statistically significant relationship was found when analyzing managers with an academic background.
+
+The duration of the program revealed a small negative influence ($\beta$ = `r round(summary(acc_company_performance_acc_design_m1)$coefficients[10], 3)`, p-value < 0.05) on the performance indicator, whereas equity taken and cohort size had a limited but statistically significant positive impact ($\beta$ = `r round(summary(acc_company_performance_acc_design_m1)$coefficients[12], 3)`, p-value < 0.01, $\beta$ = `r round(summary(acc_company_performance_acc_design_m1)$coefficients[13], 3)`, p-value < 0.01, respectively).  Focused cohort accelerators and those with a structured education plan had no statistically significant impact on immediate raised capital results though those providing external mentorship and a workspace influenced this parameter negatively ($\beta$ = `r round(summary(acc_company_performance_acc_design_m1)$coefficients[15], 3)`, p-value < 0.01, $\beta$ = `r round(summary(acc_company_performance_acc_design_m1)$coefficients[16], 3)`, p-value < 0.05, respectively). The design element with the greatest impact on this group was whether the accelerator provides a final graduation event: a negative coefficient ($\beta$ = `r round(summary(acc_company_performance_acc_design_m1)$coefficients[18], 3)`) with statistical significance which seems to contradict the idea that these showcasing opportunities are useful for startups trying to locate interested backers.
+
+We have found that accelerators with investor, corporate, and government sponsors are more likely to cross the threshold of raising $500K in the year following their graduation from the program. The impact of managing directors and founders of this program isn't felt as much but remains relevant in this context. Finally, in opposition to what was expected, the demo day was associated with a lower chance of raising large amounts of capital in the short-term.
+
+#### Logged Total Raised
+
+Another measure for startup success is the total amount of raised capital. Although this indicator lacks specific information on the quality of the company and its market fit, it gives us important details on the size of the market where this firm is inserted, how attractive it is to investors and, in turn, how the accelerator may have influenced these characteristics. In this section, we model a multiple linear regression with the accelerators design variables and a logged value of the total amount of capital raised by its cohort of startups.
+
+The logged total raised dependent variable regression (2) is significant with a p-value < 0.01. We can also reject the null hypothesis for this model and assume there is an impact of certain accelerator design elements on the amount of total capital raised by startups through their lifespan.
+
+&nbsp;
+
+The trend for sponsor impact in predicting total raised remains true when compared to the previously analyzed performance variable. Designing an accelerator with investor and government sponsors ($\beta$ = `r round(summary(acc_company_performance_acc_design_m2)$coefficients[2], 3)`, p-value < 0.01; $\beta$ = `r round(summary(acc_company_performance_acc_design_m2)$coefficients[4], 3)`, p-value < 0.01, respectively) appears to increase the chances of raising more capital. An academic sponsor presents a negative relationship to this same indicator ($\beta$ = `r round(summary(acc_company_performance_acc_design_m2)$coefficients[5], 3)`, p-value < 0.01).
+
+The tendency to mimic the previous performance indicator progresses onto the background of accelerator founders and managers. Proven entrepreneurs and those with a background in academia lower the chance of startups raising a larger amount ($\beta$ = `r round(summary(acc_company_performance_acc_design_m2)$coefficients[7], 3)`, p-value < 0.01; $\beta$ = `r round(summary(acc_company_performance_acc_design_m2)$coefficients[9], 3)`, p-value < 0.01, respectively) while accelerators founded by individuals with corporate experience tend to see better results in this metric ($\beta$ = `r round(summary(acc_company_performance_acc_design_m2)$coefficients[8], 3)`, p-value < 0.05). Investment backgrounds show no statistical significance and so does the program duration variable. The amount of equity accelerators take and the educational plan of the accelerator also show a positive and significant impact ($\beta$ = `r round(summary(acc_company_performance_acc_design_m2)$coefficients[12], 3)`, p-value < 0.01; $\beta$ = `r round(summary(acc_company_performance_acc_design_m2)$coefficients[17], 3)`, p-value < 0.01, respectively). Cohort size is positive but less significant ($\beta$ = 0.019, p-value < 0.1) and the composition of the cohort shows no significance. Finally, as with the previous performance metric, accelerators with a demo day perform worse when related to this indicator ($\beta$ = `r round(summary(acc_company_performance_acc_design_m2)$coefficients[18], 3)`, p-value < 0.01).
+
+Our results indicate a positive relationship between startup performance and accelerators whose sponsors are from the investment industry and governmental organisations. We have also found that the impact of the managing directors of these programs is more impactful towards raising more investment should these have a background of working in the industry. Providing startups with a structured learning program also increased their chances of raising more capital but the idea that a final graduation event has a negative impact remains true.
+
+#### Logged Max Valuation
+
+Understanding the long-term impact of certain accelerator design variables on their graduated startups can be partly achieved by looking at the next two variables. In the case of max valuation, we modelled a multiple linear regression to explain which of these have more influence on the way markets and investors value the accelerated firms.
+
+From the data collection process, information on company valuation proved to be the most difficult to find. For this reason, there is a discrepancy in the number of observations for model (3). Regardless, the logged max valuation regression outputs a p-value < 0.01, leading us to reject the null hypothesis and state that the structural elements of an acceleration program have a statistically significant impact on the valuation of analyzed startups.
+
+All types of program sponsors prove to be statistically insignificant. Accelerator founder and managing directors with a background as entrepreneurs have a negative impact in predicting firm valuation ($\beta$ = `r round(summary(acc_company_performance_acc_design_m3)$coefficients[7], 3)`, p-value < 0.05) and those with corporate experience display a positive relationship in the same regard ($\beta$ = `r round(summary(acc_company_performance_acc_design_m3)$coefficients[8], 3)`, p-value < 0.01). Investor and academic backgrounds are not statistically significant when predicting this performance metric and neither are program duration, percentage of equity taken, external mentorship, and a formal education plan for startups. To strengthen the likelihood of a greater valuation, the number of startups in each cohort should be increased as ($\beta$ = `r round(summary(acc_company_performance_acc_design_m3)$coefficients[13], 3)`, p-value < 0.01), and the cohort composition focus should be set aside as it impacts this performance variable negatively, even if with reduced statistical significance ($\beta$ = `r round(summary(acc_company_performance_acc_design_m3)$coefficients[14], 3)`, p-value < 0.1). Providing a workspace for startups teams reduces total valuation ($\beta$ = `r round(summary(acc_company_performance_acc_design_m3)$coefficients[16], 3)`, p-value < 0.05) and a graduation event has the opposite effect ($\beta$ = `r round(summary(acc_company_performance_acc_design_m3)$coefficients[18], 3)`, p-value < 0.05).
+
+Startup valuation was found not to be severely impacted by an accelerator's design. The type of sponsors chosen to be part of the program showed no effect on the likelihood of a higher maximum valuation for companies. In terms of founders and managing directors, corporate experience was again put in the spotlight as a good predictor of performance. In the case of this long-term metric, the previous trend for a negative impact of graduation events was felt in the opposite direction: startups with higher valuations are more likely to have been part of acceleration programs providing a demo day.
+
+#### Exit of \$1M or More
+
+The second measure for long-term startup performance concerns their exit value. This performance metric includes both IPOs and acquisitions and has been detailed by a multiple linear regression model. In this chapter, we aim to disclose the relationships occurring between the design elements of a startup accelerator and their startup's probability of achieving an exit value of more than $1M.
+
+The implemented regression for the binary dependent variable “Exit of \$1M or More” (4) is the only one out of the group which provides reduced statistical significance with a p-value = `r round(m4pvalue, 3)` or p-value < 0.1. Singling out the fourth column of Table \@ref(tab:acccompanyperformanceaccdesign), we cannot reject the null hypothesis and thus conclude that the design variables of acceleration programs do not have an impact on the exit valuation of accelerated startups. However, it is important to point out some residual statistical significance present in the “Corporation Sponsor” variable which reflects negatively on the dependent variable ($\beta$ = `r round(summary(acc_company_performance_acc_design_m4)$coefficients[3], 3)`, p-value < 0.1). We also point out that most variables, even if not statistically significant, feature a negative value.
+
+Our test results indicate that there is no proven relationship between an accelerator's design variables and a startup's long-term performance.
+
+#### Hypothesis 1: Overview
+
+A final consideration to be made on these regressions concerns the funding provided by accelerators, oftentimes in exchange for equity. As tested in Table \@ref(tab:acccompanyperformanceaccdesign), all $\beta$s near zero and there is no statistical significance when relating this design element to the startup performance indicators in review. Overall, three out of the four dependent variables showed statistical significance when modelled for multiple linear regressions and thus we are led to reject the null hypothesis that there is no significant impact of an accelerator's design variables on the performance indicators of its accelerated startups. We conclude that accelerators can be designed in order to increase the chances of success for startups that go through their programs. We were also able to establish stronger relationships between short-term performance metrics than those associated with a startup's long-term goals. This lack of correlation suggests one of two things: either the impact of acceleration is limited to the years directly after their graduation or there are other factors at play. Moving to the next test of hypothesis, we will further analyse these mechanisms.
+
+### Hypothesis 2, H~0~: Performance of Startups Graduating from Well-Designed Accelerators Is Not Greater than That of Startups Graduating from Ill-Designed Accelerators. {#hypothesis2}
+
+The second hypothesis to be tested delves deeper into the question of how and when, in the lifespan of a startup, the impact of participating in an acceleration program is felt. This test of hypothesis aims to answer RQ2 “Are there performance differences between startups who graduated from ill- and well-designed accelerator programs?”. We begin by detailing the perfect ill- and well-designed accelerators and then proceed to put one against the other, hoping to measure any differences in the performance of accelerated startups.
+
+After filtering our dataset through the performance indicators, Tables \@ref(tab:illdesigneddf) and \@ref(tab:welldesigneddf) reflect the characteristics of an ill- and well-designed accelerator, summarised in Table \@ref(tab:illwell). Inputting this data into each multiple linear regression model described in Hypothesis #1 in Section \@ref(hypothesis1) (one per performance metric), we get fitted and confidence interval values. We proceeded to compute independent, two-sample T-Tests for all performance variables. These tests were designed to assess if the difference in means of metrics for ill- and well-designed accelerators is greater than 0, therefore indicating an increase in performance between startups graduating from well-designed accelerators. Tests conducted for each company performance variable point out different results.
+
+&nbsp;
+
+\onehalfspacing
+
+`r if(knit_type == "latex"){"\\begin{minipage}{0.45\\textwidth}"}`
+```{r echo=FALSE, results='asis'}
+
+stargazer_t_test(
+  predict_t_test_500k,
+  "Ill and Well-designed Accelerators, Received > \\$500K within 1 year: Two Sample T-Test.",
+  "predictttest500k",
+  table_output,
+  table_font_size
+)
+
+```
+`r if(knit_type == "latex"){"\\end{minipage}"}`
+`r if(knit_type == "latex"){"\\qquad"}`
+`r if(knit_type == "latex"){"\\begin{minipage}{0.45\\textwidth}"}`
+```{r echo=FALSE, results='asis'}
+
+stargazer_t_test(
+  predict_t_test_total_raised,
+  "Ill and Well-designed Accelerators, Total Raised: Two Sample T-Test.",
+  "predictttesttotalraised",
+  table_output,
+  table_font_size
+)
+
+```
+`r if(knit_type == "latex"){"\\end{minipage}"}`
+&nbsp;
+`r if(knit_type == "latex"){"\\begin{minipage}{0.45\\textwidth}"}`
+```{r echo=FALSE, results='asis'}
+
+stargazer_t_test(
+  predict_t_test_max_valuation,
+  "Ill and Well-designed Accelerators, Max Valuation: Two Sample T-Test.",
+  "predictttestmaxvaluation",
+  table_output,
+  table_font_size
+)
+
+```
+`r if(knit_type == "latex"){"\\end{minipage}"}`
+`r if(knit_type == "latex"){"\\qquad"}`
+`r if(knit_type == "latex"){"\\begin{minipage}{0.45\\textwidth}"}`
+```{r echo=FALSE, results='asis'}
+
+stargazer_t_test(
+  predict_t_test_exit,
+  "Ill and Well-designed Accelerators, Exit of \\$1M or more: Two Sample T-Test.",
+  "predictttestexit",
+  table_output,
+  table_font_size
+)
+
+```
+`r if(knit_type == "latex"){"\\end{minipage}"}`
+
+\setstretch{1.5}
+
+&nbsp;
+
+&nbsp;
+
+A well-designed accelerator, when compared to an ill-designed accelerator, demonstrated a significant increase in means for “Received > \$500K within 1 year” with  t = `r round(predict_t_test_500k$statistic, 3)` and p-value < 0.05. The same test group indicated significantly larger amounts of “Total Raised” with t = `r round(predict_t_test_total_raised$statistic, 3)` and p-value < 0.01. Regarding “Max Valuation”, no significant increase was found with t = `r round(predict_t_test_max_valuation$statistic, 3)` and p-value > 0.05. Lastly, well-designed accelerators were not found to have a higher chance of achieving an “Exit of \$1M or More” with t = `r round(predict_t_test_exit$statistic, 3)` and p-value > 0.05. Consequently, we can reject the null hypothesis for the “Received > \$500K within 1 year” and “Total Raised” company performance variables but not for “Max Valuation” and “Exit of \$1M or More” .
+
+The choice to conduct tests in this manner, using only the predicted ill- and well-designed accelerators, instead of using the complete dataset of `r nrow(acc_design_choices)` accelerators resides in the filters chosen for their classification. For example, using a T-Test to compare well-designed acceleration programs whose startups “Received > \$500K within 1 year” - or any other performance variable - against those ill-designed who did not would always indicate a positive significance difference.
+
+#### Hypothesis 2: Overview
+
+In short, we reject the null hypothesis that the performance of startups graduating from well-designed accelerators is not greater than that of startups graduating from ill-designed accelerators. Of the four tests, half revealed statistical significance, rejecting the null hypothesis. We hypothesise that the impact of acceleration is not limited to the years after the startups' graduation. Accelerators who perfect the design of their programs have a longer-lasting, positive impact on their cohorts, even if restricted to the amount of raised capital as impact on valuation and exits is limited.

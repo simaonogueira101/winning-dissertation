@@ -1,0 +1,151 @@
+---
+knit: (function(input, ...) {
+    thesis_formats <- c("pdf", "bs4");
+    
+    source("./helpers/knit-functions.R");
+    knit_thesis(input, thesis_formats, ...)
+  })
+
+# Dissertation information
+title: 'Winning the Startup Game'
+subtitle: "A Study on the Design of European Startup Accelerators"
+description: "Startup accelerators - the new generation of incubators - have picked up on the expansion of the European startup and investment scene and turned knowledge acceleration into a successful venture. However, little is known about the relationships between the design variables of acceleration programs and their impact on the success - or lack thereof - of their graduated startups. This dissertation looks into these mechanisms and proposes the structure for an accelerator that maximises a startup’s chances of success."
+author: "Simão Policarpo Nogueira"
+date: "January 5, 2022"
+supervisor: "Professor José Vasconcelos-Sousa"
+program: "MSc in Business"
+cover-image: https://masters.policarponogueira.com/writing/figures/cover.jpg
+
+# Citations
+bibliography: ./writing/bibliography.bib
+link-citations: yes
+nocite:
+- '@techstars_2021'
+- '@ycombinator_2021'
+- '@foundry_2021'
+- '@scholar_2021'
+- '@f6s_2021'
+- '@crunchbase_2021'
+- '@python_2021'
+- '@nest_collective_2021'
+csl: ./helpers/custom-chicago-author-date.csl
+citeproc: true
+
+# Styling
+linkcolor: blue
+fontsize: 12pt
+
+# Output formats
+output:
+  bookdown::bs4_book:
+    theme:
+      primary: "#007DC3" # Católica-Lisbon blue
+    css: 
+      - ./helpers/bs4_style.css
+    repo: https://github.com/simaonogueira101/winning-dissertation
+  bookdown::pdf_document2:
+    latex_engine: xelatex
+    toc: no
+    keep_tex: yes
+    includes:
+      in_header: 
+        - ./writing/chapters/preamble.tex
+---
+
+```{r include=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE)
+
+# Turn off scientific notation
+options(scipen = 999)
+
+# Load packages
+source("./helpers/packages.R")
+
+# Load keys
+source("./helpers/ENV_KEYS.R")
+
+knit_type <- opts_knit$get("rmarkdown.pandoc.to")
+table_output <- knit_type
+options(knitr.table.format = table_output)
+table_font_size = switch(  
+    knit_type,  
+    "latex" = "scriptsize",
+    "html" = NULL
+)
+table_font_size_kable = switch(  
+    knit_type,  
+    "latex" = 9,
+    "html" = NULL
+)
+
+# Load functions
+source("./helpers/corr-table.R")
+source("./helpers/stargazer-t-test.R")
+
+# Load statistical analysis
+source("./winning-statistics.R")
+
+chapters = switch(  
+    knit_type,  
+    "latex" = c(
+      # Cover
+      "./writing/chapters/frontpage.Rmd",
+      
+      # Acknowledgments
+      "./writing/chapters/acknowledgments.Rmd"
+    ),
+    
+    "html" = c(
+      # Welcome
+      "./writing/chapters/welcome.Rmd"
+    )
+)
+
+chapters <- c(
+  chapters,
+  
+  # Abstracts
+  "./writing/chapters/abstract.Rmd",
+  "./writing/chapters/resumo.Rmd",
+  
+  # Table of Contents
+  "./writing/chapters/table-of-contents.Rmd",
+  
+  # Content
+  "./writing/chapters/introduction.Rmd",
+  "./writing/chapters/literature-review.Rmd",
+  "./writing/chapters/research-methodology.Rmd",
+  "./writing/chapters/analysis-of-results.Rmd",
+  "./writing/chapters/hypothesis-testing.Rmd",
+  "./writing/chapters/conclusions-and-implications.Rmd",
+  "./writing/chapters/limitations-and-future-research.Rmd",
+  
+  # Appendix
+  "./writing/chapters/appendix.Rmd"
+)
+
+if(knit_type == "html") {
+  chapters <- c(
+    chapters,
+    
+    # Author contacts
+    "./writing/chapters/contacts.Rmd"
+  )
+}
+
+chapters <- c(
+  chapters,
+  
+  # References
+  "./writing/chapters/references.Rmd"
+)
+
+```
+
+<!-- ### Load content chapters ### -->
+
+```{r child=chapters}
+```
+
+<!-- ### End load content chapters ### -->

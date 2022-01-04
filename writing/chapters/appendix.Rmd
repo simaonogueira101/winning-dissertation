@@ -1,0 +1,225 @@
+\clearpage
+
+\appendix
+
+# Appendix
+
+## Crunchbase Enterprise API Documentation {#crunchbasedocs}
+
+The following tables include information from the documentation of Crunchbase's Enterprise API [@crunchbase_documentation_2021] and describe the structure of this same interface.
+
+&nbsp;
+
+\onehalfspacing
+
+```{r crunchlocation, echo=FALSE}
+
+crunch_location <- c(
+  "location",
+  "location_identifiers"
+)
+
+crunch_location_desc <- c(
+  "Full location name (e.g. Denver, Colorado, United States, North America)",
+  "Globally unique id of this entity"
+)
+
+kable(
+  data.frame(crunch_location, crunch_location_desc),
+  caption = "Crunchbase: Location Data.",
+  col.names = c("Variable Name", "Description"),
+  booktabs = TRUE,
+  linesep = "\\addlinespace"
+) %>%
+  kable_styling(
+    font_size = table_font_size_kable,
+    full_width = TRUE,
+    latex_options = c(
+      "HOLD_position"
+    )
+  ) %>%
+  column_spec(
+    2,
+    width = "35em"
+  ) %>%
+  add_footnote("Request URL: https://api.crunchbase.com/api/v4/searches/locations/", notation = "none")
+
+```
+
+```{r crunchaccelerator, echo=FALSE}
+
+crunch_accelerator <- c(
+  "identifier",
+  "description",
+  "category_groups",
+  "demo_days",
+  "founder_identifiers",
+  "investor_type",
+  "location_identifiers",
+  "program_duration",
+  "program_type",
+  "website"
+)
+
+crunch_accelerator_desc <- c(
+  "Name of the Organization",
+  "Organization Description",
+  "Superset of Industries (e.g. Software, Mobile, Health Care)",
+  "Whether an accelerator hosts any demo days",
+  "Founders of the organization",
+  "This describes the type of investor this organization is (e.g. Angel, Fund of Funds, Venture Capital)",
+  "Where the organization is headquartered",
+  "The duration of the Acceleration Program in number of weeks",
+  "The type of Accelerator Program (e.g. On-Site, Online)",
+  "Link to homepage"
+)
+
+kable(
+  data.frame(crunch_accelerator, crunch_accelerator_desc),
+  caption = "Crunchbase: Accelerator Data.",
+  col.names = c("Variable Name", "Description"),
+  booktabs = TRUE,
+  linesep = "\\addlinespace"
+) %>%
+  kable_styling(
+    font_size = table_font_size_kable,
+    full_width = TRUE,
+    latex_options = c(
+      "HOLD_position"
+    )
+  ) %>%
+  column_spec(
+    2,
+    width = "35em"
+  ) %>%
+  add_footnote("Request URL: https://api.crunchbase.com/api/v4/searches/organizations/", notation = "none")
+
+```
+
+```{r crunchacceleratorfounder, echo=FALSE}
+
+crunch_accelerator_founder <- c(
+  "identifier",
+  "num_founded_organizations",
+  "num_investments",
+  "num_jobs",
+  "degrees"
+)
+
+crunch_accelerator_founder_desc <- c(
+  "First and last name of a Person",
+  "Number of Organizations that the person founded",
+  "Number of Investments the Individual has participated in",
+  "Number of jobs the individual has had",
+  "The academic degrees that the person has received"
+)
+
+kable(
+  data.frame(crunch_accelerator_founder, crunch_accelerator_founder_desc),
+  caption = "Crunchbase: Accelerator Founder Data.",
+  col.names = c("Variable Name", "Description"),
+  booktabs = TRUE,
+  linesep = "\\addlinespace"
+) %>%
+  kable_styling(
+    font_size = table_font_size_kable,
+    full_width = TRUE,
+    latex_options = c(
+      "HOLD_position"
+    )
+  ) %>%
+  column_spec(
+    2,
+    width = "35em"
+  ) %>%
+  add_footnote("Request URL: https://api.crunchbase.com/api/v4/entities/people/", notation = "none")
+
+```
+
+```{r crunchacceleratorinvestment, echo=FALSE}
+
+crunch_accelerator_investment <- c(
+  "identifier",
+  "num_founded_organizations",
+  "num_investments",
+  "num_jobs",
+  "degrees"
+)
+
+crunch_accelerator_investment_desc <- c(
+  "First and last name of a Person",
+  "Number of Organizations that the person founded",
+  "Number of Investments the Individual has participated in",
+  "Number of jobs the individual has had",
+  "The academic degrees that the person has received"
+)
+
+kable(
+  data.frame(crunch_accelerator_investment, crunch_accelerator_investment_desc),
+  caption = "Crunchbase: Accelerator Investment Data.",
+  col.names = c("Variable Name", "Description"),
+  booktabs = TRUE,
+  linesep = "\\addlinespace"
+) %>%
+  kable_styling(
+    font_size = table_font_size_kable,
+    full_width = TRUE,
+    latex_options = c(
+      "HOLD_position"
+    )
+  ) %>%
+  column_spec(
+    2,
+    width = "35em"
+  ) %>%
+  add_footnote("Request URL: https://api.crunchbase.com/api/v4/searches/investments/", notation = "none")
+
+```
+
+```{r crunchstartup, echo=FALSE}
+
+crunch_startup <- c(
+  "identifier",
+  "description",
+  "funding_stage",
+  "funding_total",
+  "location_identifiers",
+  "valuation",
+  "raised_investments",
+  "ipos"
+)
+
+crunch_startup_desc <- c(
+  "Name of the Organization",
+  "Organization Description",
+  "This field describes an organization's most recent funding status (e.g. Early Stage Venture, Late Stage Venture, M&A)",
+  "Total amount raised across all funding rounds",
+  "Where the organization is headquartered",
+  "Latest post-money valuation of the organization",
+  "All investments received by the organization",
+  "The organization's initial public offering"
+)
+
+kable(
+  data.frame(crunch_startup, crunch_startup_desc),
+  caption = "Crunchbase: Startup Data.",
+  col.names = c("Variable Name", "Description"),
+  booktabs = TRUE,
+  linesep = "\\addlinespace"
+) %>%
+  kable_styling(
+    font_size = table_font_size_kable,
+    full_width = TRUE,
+    latex_options = c(
+      "HOLD_position"
+    )
+  ) %>%
+  column_spec(
+    2,
+    width = "35em"
+  ) %>%
+  add_footnote("Request URL: https://api.crunchbase.com/api/v4/entities/organizations/", notation = "none")
+
+```
+
+\setstretch{1.5}

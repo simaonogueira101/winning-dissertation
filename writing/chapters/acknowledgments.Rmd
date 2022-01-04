@@ -1,0 +1,13 @@
+\clearpage
+
+# Acknowledgments {-}
+
+Many are those who I wish to thank and acknowledge. It is to you I dedicate the many hours of work behind this document.
+
+Firstly, to my advisor, Professor José Vasconcelos-Sousa, whose guidance, expertise and round-the-clock availability successfully portray what I have excitedly experienced at CATÓLICA-LISBON for the duration of my Master’s program. Your honest enthusiasm for the topic and belief in my success from the very beginning were imperative for the writing of this dissertation.
+
+To Nest Collective and our team, for the trust and confidence in the effort I placed on this research and for reviewing my work. You have allowed me to grow personally and professionally from the very beginning of my career. This has been my second - almost first! - home for the last years and will hopefully be so for many more.
+
+To Crunchbase, for allowing access to their data without which I would not have been able to complete my analysis but also for their contributions to the scientific community that I am sure have generated numerous, impactful studies.
+
+And lastly, to those who stand with me no matter what - here and someplace else. To my family, to my friends, to my girlfriend, Rafa, for your support, patience and love. Never have I felt alone.

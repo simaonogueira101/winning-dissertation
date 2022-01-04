@@ -1,0 +1,3198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>4 Design Elements and Performance Indicators: An Analysis of Results | Winning the Startup Game</title>
+<meta name="author" content="Simão Policarpo Nogueira">
+<meta name="description" content="In the previous chapter, we explained how data for 216 accelerators and 4497 startups was obtained. The following analysis describes the collected data and puts it through statistical models to...">
+<meta name="generator" content="bookdown 0.24.4 with bs4_book()">
+<meta property="og:title" content="4 Design Elements and Performance Indicators: An Analysis of Results | Winning the Startup Game">
+<meta property="og:type" content="book">
+<meta property="og:image" content="https://masters.policarponogueira.com/writing/figures/cover.jpg">
+<meta property="og:description" content="In the previous chapter, we explained how data for 216 accelerators and 4497 startups was obtained. The following analysis describes the collected data and puts it through statistical models to...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="4 Design Elements and Performance Indicators: An Analysis of Results | Winning the Startup Game">
+<meta name="twitter:description" content="In the previous chapter, we explained how data for 216 accelerators and 4497 startups was obtained. The following analysis describes the collected data and puts it through statistical models to...">
+<meta name="twitter:image" content="https://masters.policarponogueira.com/writing/figures/cover.jpg">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="helpers/bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="A Study on the Design of European Startup Accelerators">Winning the Startup Game</a>:
+        <small class="text-muted">A Study on the Design of European Startup Accelerators</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome!</a></li>
+<li><a class="" href="abstract.html">Abstract</a></li>
+<li><a class="" href="resumo.html">Resumo</a></li>
+<li><a class="" href="introduction.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li><a class="" href="literature-review.html"><span class="header-section-number">2</span> Accelewho?: A Literature Review</a></li>
+<li><a class="" href="research-methodology.html"><span class="header-section-number">3</span> Research Methodology</a></li>
+<li><a class="active" href="analysis-of-results.html"><span class="header-section-number">4</span> Design Elements and Performance Indicators: An Analysis of Results</a></li>
+<li><a class="" href="conclusion-and-implications.html"><span class="header-section-number">5</span> Conclusion and Implications</a></li>
+<li><a class="" href="limitations-and-future-research.html"><span class="header-section-number">6</span> Limitations and Future Research</a></li>
+<li><a class="" href="appendix.html"><span class="header-section-number">7</span> Appendix</a></li>
+<li><a class="" href="author-contacts.html"><span class="header-section-number">8</span> Author Contacts</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/simaonogueira101/winning-dissertation">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="analysis-of-results" class="section level1" number="4">
+<h1>
+<span class="header-section-number">4</span> Design Elements and Performance Indicators: An Analysis of Results<a class="anchor" aria-label="anchor" href="#analysis-of-results"><i class="fas fa-link"></i></a>
+</h1>
+<p>In the previous chapter, we explained how data for 216 accelerators and 4497 startups was obtained. The following analysis describes the collected data and puts it through statistical models to present the results for the tests of hypothesis.</p>
+<div id="sample-analysis" class="section level2" number="4.1">
+<h2>
+<span class="header-section-number">4.1</span> Sample Analysis<a class="anchor" aria-label="anchor" href="#sample-analysis"><i class="fas fa-link"></i></a>
+</h2>
+<div id="accelerators" class="section level3" number="4.1.1">
+<h3>
+<span class="header-section-number">4.1.1</span> Accelerators<a class="anchor" aria-label="anchor" href="#accelerators"><i class="fas fa-link"></i></a>
+</h3>
+<p>Our sample contains 216 accelerators distributed by 23 countries in the European region (Figure <a href="analysis-of-results.html#fig:accgeo">4.1</a>). The two countries with the largest number of accelerators - the United Kingdom and Germany - account for over 50% of all analyzed programs, making them true hotspots for early- and seed-stage investments and interesting study objects for the purpose of this research (Table <a href="analysis-of-results.html#tab:accgeodist">4.1</a>).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:accgeo"></span>
+<img src="winning-dissertation_files/figure-html/accgeo-1.png" alt="Accelerator Geographic Distribution." width="95%"><p class="caption">
+Figure 4.1: Accelerator Geographic Distribution.
+</p>
+</div>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:accgeodist">Table 4.1: </span>Accelerator Geographic Distribution.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+Countries
+</th>
+<th style="text-align:right;">
+#
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+United Kingdom
+</td>
+<td style="text-align:right;">
+80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Germany
+</td>
+<td style="text-align:right;">
+33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Spain
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+France
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Netherlands
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Italy
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ireland
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Finland
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sweden
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hungary
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Belgium
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Estonia
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Latvia
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Poland
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Portugal
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Romania
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Austria
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bulgaria
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Czech Republic
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Denmark
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Lithuania
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Slovakia (Slovak Republic)
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Slovenia
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:addindustry">Table 4.2: </span>Accelerator Industry Category Variation.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+Industry Cluster
+</th>
+<th style="text-align:right;">
+Percentage
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Financial Services
+</td>
+<td style="text-align:right;">
+23.102%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Lending and Investments
+</td>
+<td style="text-align:right;">
+11.334%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Professional Services
+</td>
+<td style="text-align:right;">
+8.731%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Information Technology
+</td>
+<td style="text-align:right;">
+5.098%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Software
+</td>
+<td style="text-align:right;">
+4.284%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Internet Services
+</td>
+<td style="text-align:right;">
+3.905%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Education
+</td>
+<td style="text-align:right;">
+3.037%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Science and Engineering
+</td>
+<td style="text-align:right;">
+2.820%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Data and Analytics
+</td>
+<td style="text-align:right;">
+2.440%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Health Care
+</td>
+<td style="text-align:right;">
+2.440%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Transportation
+</td>
+<td style="text-align:right;">
+2.278%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Community and Lifestyle
+</td>
+<td style="text-align:right;">
+2.115%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Media and Entertainment
+</td>
+<td style="text-align:right;">
+2.115%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hardware
+</td>
+<td style="text-align:right;">
+1.952%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Commerce and Shopping
+</td>
+<td style="text-align:right;">
+1.518%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sustainability
+</td>
+<td style="text-align:right;">
+1.464%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Real Estate
+</td>
+<td style="text-align:right;">
+1.356%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Artificial Intelligence
+</td>
+<td style="text-align:right;">
+1.193%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Energy
+</td>
+<td style="text-align:right;">
+1.193%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sales and Marketing
+</td>
+<td style="text-align:right;">
+1.193%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Privacy and Security
+</td>
+<td style="text-align:right;">
+1.139%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Food and Beverage
+</td>
+<td style="text-align:right;">
+1.030%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:right;">
+1.030%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+All Other Clusters
+</td>
+<td style="text-align:right;">
+13.232%
+</td>
+</tr>
+</tbody>
+</table></div>
+<p> </p>
+<p> </p>
+<div class="inline-table"><table style="text-align:center" class="table table-sm">
+<caption>
+<strong>Accelerator Program Design Variables: Summary Statistics.</strong>
+</caption>
+<tr>
+<td colspan="6" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Statistic
+</td>
+<td>
+N
+</td>
+<td>
+Mean
+</td>
+<td>
+St. Dev.
+</td>
+<td>
+Min
+</td>
+<td>
+Max
+</td>
+</tr>
+<tr>
+<td colspan="6" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Cohort Size
+</td>
+<td>
+216
+</td>
+<td>
+14.676
+</td>
+<td>
+13.463
+</td>
+<td>
+2
+</td>
+<td>
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Focused Cohort Composition
+</td>
+<td>
+216
+</td>
+<td>
+0.546
+</td>
+<td>
+0.499
+</td>
+<td>
+0
+</td>
+<td>
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Program Duration (in number of weeks)
+</td>
+<td>
+216
+</td>
+<td>
+19.412
+</td>
+<td>
+15.127
+</td>
+<td>
+0
+</td>
+<td>
+144
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Funding Provided (in thousands of )
+</td>
+<td>
+216
+</td>
+<td>
+66.621
+</td>
+<td>
+107.259
+</td>
+<td>
+0
+</td>
+<td>
+1,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Equity Taken
+</td>
+<td>
+216
+</td>
+<td>
+5.032
+</td>
+<td>
+5.389
+</td>
+<td>
+0
+</td>
+<td>
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Provides External Mentors
+</td>
+<td>
+216
+</td>
+<td>
+0.792
+</td>
+<td>
+0.407
+</td>
+<td>
+0
+</td>
+<td>
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Provides Formal Education
+</td>
+<td>
+216
+</td>
+<td>
+0.250
+</td>
+<td>
+0.434
+</td>
+<td>
+0
+</td>
+<td>
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Provides Workspace
+</td>
+<td>
+216
+</td>
+<td>
+0.769
+</td>
+<td>
+0.423
+</td>
+<td>
+0
+</td>
+<td>
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Graduation Event
+</td>
+<td>
+216
+</td>
+<td>
+0.866
+</td>
+<td>
+0.342
+</td>
+<td>
+0
+</td>
+<td>
+1
+</td>
+</tr>
+<tr>
+<td colspan="6" style="border-bottom: 1px solid black">
+</td>
+</tr>
+</table></div>
+<p>As for accelerator industry clustering, “Financial Services”, “Lending and Investments”, and “Professional Services” make up over 43% of the distribution. These categories represent the basic services offered by accelerators to their cohort of startups and were part of the definition of non-focused cohort compositions (which describes 54.6% of researched programs). The most relevant focused industry clusters include “Information Technology”, “Software” and “Internet Services” (over 13% of the distribution). During our research, we were able to confirm this statement: a large number of the studied programs engaged with tech startups regardless of their commitment to other specific industries.</p>
+<p>Although the percentage of accelerators that include the “Education” industry cluster is relatively small (~3%), the percentage of those whose design choices include “Provides Formal Education” is much higher (25%). This disparity brings out the challenges of defining certain aspects of acceleration programs as previously stated and following <span class="citation">Cohen and Hochberg (<a href="references.html#ref-cohen_accelerating_2014" role="doc-biblioref">2014</a>)</span>. Accelerators were found to have an average cohort size of 15 startups and a duration of 19 weeks (close to 5 months). The longest observed program ran for a full three years. Acceleration funding averaged $66621 with 5% equity in return for the provided services and mentorship. Most programs offered a workspace for startup teams and some form of external mentorship with their corporate, governmental, academic, or investor sponsors and stakeholders. 86.6% of accelerators chose to showcase the work of their cohort with a final graduation event, oftentimes referred to as demo day.</p>
+<p>There are other components that make up the design of an accelerator program, considered in Tables <a href="analysis-of-results.html#tab:accgeodist">4.1</a> to <a href="#tab:accvars"><strong>??</strong></a>: the backgrounds of founders and managing directors and the program’s sponsors. In Section <a href="literature-review.html#reviewmanagementimpact">2.4.1</a> we made the case for the importance of these stakeholders especially in the strategy and entry criteria of the program.</p>
+<p> </p>
+<div class="inline-table"><table style="text-align:center" class="table table-sm">
+<caption>
+<strong>Accelerator Founding Managing Director Backgrounds: Summary Statistics.</strong>
+</caption>
+<tr>
+<td colspan="6" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Statistic
+</td>
+<td>
+N
+</td>
+<td>
+Mean
+</td>
+<td>
+St. Dev.
+</td>
+<td>
+Min
+</td>
+<td>
+Max
+</td>
+</tr>
+<tr>
+<td colspan="6" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Prior Investor Exp.
+</td>
+<td>
+216
+</td>
+<td>
+0.088
+</td>
+<td>
+0.284
+</td>
+<td>
+0
+</td>
+<td>
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Prior Entrepreneur Exp.
+</td>
+<td>
+216
+</td>
+<td>
+0.528
+</td>
+<td>
+0.500
+</td>
+<td>
+0
+</td>
+<td>
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Prior Corporate Exp.
+</td>
+<td>
+216
+</td>
+<td>
+0.444
+</td>
+<td>
+0.498
+</td>
+<td>
+0
+</td>
+<td>
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Prior Academic Exp.
+</td>
+<td>
+216
+</td>
+<td>
+0.185
+</td>
+<td>
+0.389
+</td>
+<td>
+0
+</td>
+<td>
+1
+</td>
+</tr>
+<tr>
+<td colspan="6" style="border-bottom: 1px solid black">
+</td>
+</tr>
+</table></div>
+<div class="inline-table"><table style="text-align:center" class="table table-sm">
+<caption>
+<strong>Accelerator Founding Managing Director Backgrounds: Correlation.</strong>
+</caption>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Prior Investor Exp.
+</td>
+<td>
+Prior Entrepreneur Exp.
+</td>
+<td>
+Prior Corporate Exp.
+</td>
+<td>
+Prior Academic Exp.
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Prior Investor Exp.
+</td>
+<td>
+1.000
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Prior Entrepreneur Exp.
+</td>
+<td>
+0.294* * *
+</td>
+<td>
+1.000
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Prior Corporate Exp.
+</td>
+<td>
+0.314* * *
+</td>
+<td>
+0.846* * *
+</td>
+<td>
+1.000
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Prior Academic Exp.
+</td>
+<td>
+0.315* * *
+</td>
+<td>
+0.451* * *
+</td>
+<td>
+0.461* * *
+</td>
+<td>
+1.000
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td colspan="5" style="text-align:left">
+<em>Note:</em> <em>p&lt;0.1; <strong>p&lt;0.05; </strong></em>p&lt;0.01
+</td>
+</tr>
+</table></div>
+<p>Of all program founders and managing directors, 52.8% were found to have experience founding other companies or organizations whereas 44.4% had previously held a corporate job (Table <a href="#tab:mdbackgroundsdesc"><strong>??</strong></a>). These two attributes describe a strong positive correlation with statistical significance - the strongest of the matrix -, leading us to believe that many founders first gained experience by working with other professionals and then went on to create their own companies. Data also reveals that 8.8% of founders and managing directors had experience as investors and 18.5% had prior academic experience.</p>
+<p>Founders with prior experience as investors are the least likely to be closely related to academia while those with corporate experience are the most likely. Correlations between founder backgrounds are all positive and statistically significant (Table <a href="#tab:mdbackgroundscorr"><strong>??</strong></a>).</p>
+<p> </p>
+<div class="inline-table"><table style="text-align:center" class="table table-sm">
+<caption>
+<strong>Accelerator Founding Sponsors: Summary Statistics.</strong>
+</caption>
+<tr>
+<td colspan="6" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Statistic
+</td>
+<td>
+N
+</td>
+<td>
+Mean
+</td>
+<td>
+St. Dev.
+</td>
+<td>
+Min
+</td>
+<td>
+Max
+</td>
+</tr>
+<tr>
+<td colspan="6" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Corporation Sponsor
+</td>
+<td>
+216
+</td>
+<td>
+0.921
+</td>
+<td>
+0.270
+</td>
+<td>
+0
+</td>
+<td>
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Government Sponsor
+</td>
+<td>
+216
+</td>
+<td>
+0.245
+</td>
+<td>
+0.431
+</td>
+<td>
+0
+</td>
+<td>
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Academia Sponsor
+</td>
+<td>
+216
+</td>
+<td>
+0.194
+</td>
+<td>
+0.397
+</td>
+<td>
+0
+</td>
+<td>
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Investor Sponsor
+</td>
+<td>
+216
+</td>
+<td>
+0.833
+</td>
+<td>
+0.374
+</td>
+<td>
+0
+</td>
+<td>
+1
+</td>
+</tr>
+<tr>
+<td colspan="6" style="border-bottom: 1px solid black">
+</td>
+</tr>
+</table></div>
+<div class="inline-table"><table style="text-align:center" class="table table-sm">
+<caption>
+<strong>Accelerator Founding Sponsors: Correlation.</strong>
+</caption>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Corporation Sponsor
+</td>
+<td>
+Government Sponsor
+</td>
+<td>
+Academia Sponsor
+</td>
+<td>
+Investor Sponsor
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Corporation Sponsor
+</td>
+<td>
+1.000
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Government Sponsor
+</td>
+<td>
+0.127*
+</td>
+<td>
+1.000
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Academia Sponsor
+</td>
+<td>
+0.100
+</td>
+<td>
+0.209* * *
+</td>
+<td>
+1.000
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Investor Sponsor
+</td>
+<td>
+0.469* * *
+</td>
+<td>
+0.111
+</td>
+<td>
+0.157* *
+</td>
+<td>
+1.000
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td colspan="5" style="text-align:left">
+<em>Note:</em> <em>p&lt;0.1; <strong>p&lt;0.05; </strong></em>p&lt;0.01
+</td>
+</tr>
+</table></div>
+<p>Apparent in the data (Table <a href="#tab:foundingsponsorsdesc"><strong>??</strong></a>) is the proximity between acceleration programs and other corporations with 92.1% of these having close connections to a corporate sponsor. Data reveals that it is almost as important for accelerators to partner with investor sponsors: 83.3% of all programs included investors in their activities, be it throughout the program as mentors and advisors or as prospective backers present in the graduation events. Accelerators with corporate sponsors were shown to be correlated to those with investor sponsors as the data discloses a weak, positive correlation with statistical significance (Table <a href="#tab:foundingsponsorscorr"><strong>??</strong></a>).</p>
+<p>A quarter (24.5%) of all accelerators were found to be linked to government institutions and 19.4% akin to an academic institution. The correlation coefficient between the latter is also weak but positive and statistically significant. Some associations were also found between government and corporation sponsors and between investor and academia sponsors but these are weaker and show less statistical significance.</p>
+</div>
+<div id="analysisstartups" class="section level3" number="4.1.2">
+<h3>
+<span class="header-section-number">4.1.2</span> Startups<a class="anchor" aria-label="anchor" href="#analysisstartups"><i class="fas fa-link"></i></a>
+</h3>
+<p>Our sample of startups has 4497 complete observations with companies raising $3.4M on average. This value includes both the acceleration investments and any other rounds these firms may have been part of. Having access to the funding history of the analyzed startups, we were able to calculate the amount of raised capital in the year following the end of the acceleration program undergone by the company. 17.8% of all startups raised at least $500K in this period (Table <a href="#tab:acccompanyperformancedesc"><strong>??</strong></a>).</p>
+<p> </p>
+<div class="inline-table"><table style="text-align:center" class="table table-sm">
+<caption>
+<strong>Accelerator Company Performance: Summary Statistics.</strong>
+</caption>
+<tr>
+<td colspan="6" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Statistic
+</td>
+<td>
+N
+</td>
+<td>
+Mean
+</td>
+<td>
+St. Dev.
+</td>
+<td>
+Min
+</td>
+<td>
+Max
+</td>
+</tr>
+<tr>
+<td colspan="6" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Received &gt; 500K within 1 year
+</td>
+<td>
+4,497
+</td>
+<td>
+0.178
+</td>
+<td>
+0.382
+</td>
+<td>
+0
+</td>
+<td>
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Total Raised (in millions of )
+</td>
+<td>
+4,497
+</td>
+<td>
+3.439
+</td>
+<td>
+33.747
+</td>
+<td>
+0.000
+</td>
+<td>
+1,719.060
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Logged Total Raised
+</td>
+<td>
+4,497
+</td>
+<td>
+8.785
+</td>
+<td>
+6.322
+</td>
+<td>
+0.000
+</td>
+<td>
+21.265
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Max Valuation (in millions of )
+</td>
+<td>
+504
+</td>
+<td>
+63.451
+</td>
+<td>
+487.088
+</td>
+<td>
+0.015
+</td>
+<td>
+9,000.503
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Logged Max Valuation
+</td>
+<td>
+504
+</td>
+<td>
+14.838
+</td>
+<td>
+1.760
+</td>
+<td>
+9.616
+</td>
+<td>
+22.921
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Exit of 1M or more
+</td>
+<td>
+4,497
+</td>
+<td>
+0.007
+</td>
+<td>
+0.083
+</td>
+<td>
+0
+</td>
+<td>
+1
+</td>
+</tr>
+<tr>
+<td colspan="6" style="border-bottom: 1px solid black">
+</td>
+</tr>
+</table></div>
+<p>The range of company valuations is extremely wide with the lowest valued at the $15K mark and the largest firm being valued at $9B. Only 0.7% of all analyzed firms had an exit of over $1M, considering both Initial Public Offerings (IPOs) and Acquisitions. For the final analysis, total raised and valuation values were logged as both are highly skewed and provide a more explanatory analysis when examined this way. In fact, according to <span class="citation">Cohen et al. (<a href="references.html#ref-cohen_design_2019" role="doc-biblioref">2019</a>)</span>, as per the literature, it is common to log these variables.</p>
+</div>
+<div id="typologyclassification" class="section level3" number="4.1.3">
+<h3>
+<span class="header-section-number">4.1.3</span> Typology<a class="anchor" aria-label="anchor" href="#typologyclassification"><i class="fas fa-link"></i></a>
+</h3>
+<p>Through the trends disclosed by our initial data analysis, we intend to build upon <span class="citation">Hausberg and Korreck (<a href="references.html#ref-hausberg_business_2020" role="doc-biblioref">2020</a>)</span>’s research and typological groundwork that identifies several dimensions through which incubators can be classified: support strategy, business strategy, incubatee focus, institutional mission, sponsor/partner focus, and multi-dimensional. We propose a three-step classification process gathering information from the support strategy dimension - according to the model by <span class="citation">Bruneel et al. (<a href="references.html#ref-bruneel_evolution_2012" role="doc-biblioref">2012</a>)</span> -, the incubatee focus dimension - the model by <span class="citation">Peters, Rice, and Sundararajan (<a href="references.html#ref-peters_role_2004" role="doc-biblioref">2004</a>)</span> -, and the sponsor/partner focus dimension - merging all models analyzed by <span class="citation">Hausberg and Korreck (<a href="references.html#ref-hausberg_business_2020" role="doc-biblioref">2020</a>)</span>.</p>
+<p><span class="citation">Bruneel et al. (<a href="references.html#ref-bruneel_evolution_2012" role="doc-biblioref">2012</a>)</span> put forward a generational classification model with three segments. The first generation incubator targeted provisioning of turnkey office space, the second added shared business support services and the third revealed the value of knowledge and people networks.</p>
+<p> 
+ </p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:typologyclassificationfig"></span>
+<img src="writing/figures/classification_system.png" alt="Incubator Typology Classification System." width="95%"><p class="caption">
+Figure 4.2: Incubator Typology Classification System.
+</p>
+</div>
+<p> </p>
+<p> </p>
+<p>Firstly, for the support strategy, this model is used to determine the concrete type of incubator:</p>
+<ul>
+<li><p>(1.1) first-generation with a focus on real estate,</p></li>
+<li><p>(1.2) second-generation with a focus on intangible assets,</p></li>
+<li><p>and (1.3) third-generation with a focus on the network.</p></li>
+</ul>
+<p>Secondly, applying <span class="citation">Peters, Rice, and Sundararajan (<a href="references.html#ref-peters_role_2004" role="doc-biblioref">2004</a>)</span> designation of:</p>
+<ul>
+<li><p>(2.1) for-profit incubator,</p></li>
+<li><p>And (2.2) non-profit, we achieve a classification accounting for the type of result coveted by the incubator.</p></li>
+</ul>
+<p>In line with the classification by <span class="citation">Peters, Rice, and Sundararajan (<a href="references.html#ref-peters_role_2004" role="doc-biblioref">2004</a>)</span>, the third model includes:</p>
+<ul>
+<li><p>(3.1) university-based incubators as a broad indicator of the incubator’s funding and financial support mechanisms.</p></li>
+<li><p>Having then identified the need for further classification as intrapreneurship efforts do not fit into any pre-established categories, a second typology of (3.2) corporate incubators is suggested following the literature. The reasoning for this approach lies in the studied differences between corporate and university-based incubators, which exist when comparing service provider, provided service type, and service receiver <span class="citation">(<a href="references.html#ref-becker_corporate_2006" role="doc-biblioref">Becker and Gassmann 2006</a>)</span>.</p></li>
+<li><p>Through further investigation and with the collected dataset at hand, another category is added to the third model: (3.3) government incubators, where the main sponsor and backer of the program is a public institution. This statement is supported by <span class="citation">Grimaldi and Grandi (<a href="references.html#ref-grimaldi_business_2005" role="doc-biblioref">2005</a>)</span>’s model which proposes “regional public incubators” and <span class="citation">Kuratko and LaFollette (<a href="references.html#ref-kuratko_small_1987" role="doc-biblioref">1987</a>)</span> and <span class="citation">Udell (<a href="references.html#ref-udell_are_1990" role="doc-biblioref">1990</a>)</span> who suggest “publicly sponsored incubators”.</p></li>
+<li><p>Even though it is not often in our dataset that incubators were found to be partner-less, many did not have one key institution or organization as a backer. Therefore, (3.4) independent accelerators are not edge cases and should be contemplated in this systemic approach. The complete system is described in Figure <a href="analysis-of-results.html#fig:typologyclassificationfig">4.2</a>.</p></li>
+</ul>
+<p>Although this model does not by itself configure a well- or ill-designed accelerator, it successfully depicts some of the trends surrounding the results described in this section. Expectedly, we consider all studied accelerators to match (1) support strategy (1.3) third-generation due to their provided mentorship and network: these two factors are part of the definition of accelerator and are the ones which more significantly distance them from their ancestor - the incubator. As for (2) results orientation and (3) sponsors/partners, results vary widely: all possible combinations were observed in the complete dataset. It is worth pointing out that (3.1) university incubators and (3.3) government incubators were found in fewer numbers (19.4% and 24.5%, respectively), against other sponsor types which were present in over 80% of our results.</p>
+<p> </p>
+<div class="inline-table"><table style="text-align:center" class="table table-sm">
+<caption>
+<strong>Accelerator Founding Sponsors and Accelerator Founding Managing Director Backgrounds.</strong>
+</caption>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Corporation Sponsor
+</td>
+<td>
+Government Sponsor
+</td>
+<td>
+Academia Sponsor
+</td>
+<td>
+Investor Sponsor
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+<td>
+(4)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Prior Investor Exp.
+</td>
+<td>
+0.173 (0.550)
+</td>
+<td>
+-0.264 (0.384)
+</td>
+<td>
+-0.610 (0.508)
+</td>
+<td>
+-0.078 (0.404)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Prior Entrepreneur Exp.
+</td>
+<td>
+-0.365 (0.441)
+</td>
+<td>
+0.064 (0.346)
+</td>
+<td>
+-0.047 (0.361)
+</td>
+<td>
+-0.067 (0.389)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Prior Corporate Exp.
+</td>
+<td>
+0.035 (0.444)
+</td>
+<td>
+-0.132 (0.353)
+</td>
+<td>
+-0.268 (0.374)
+</td>
+<td>
+-0.131 (0.396)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Prior Academic Exp.
+</td>
+<td>
+0.769 (0.472)
+</td>
+<td>
+-0.091 (0.286)
+</td>
+<td>
+-0.030 (0.320)
+</td>
+<td>
+0.682<sup>**</sup> (0.347)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+1.486<sup>***</sup> (0.189)
+</td>
+<td>
+-0.629<sup>***</sup> (0.133)
+</td>
+<td>
+-0.690<sup>***</sup> (0.135)
+</td>
+<td>
+0.967<sup>***</sup> (0.148)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+216
+</td>
+<td>
+216
+</td>
+<td>
+216
+</td>
+<td>
+216
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Log Likelihood
+</td>
+<td>
+-57.520
+</td>
+<td>
+-119.674
+</td>
+<td>
+-103.519
+</td>
+<td>
+-95.169
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="4" style="text-align:left">
+<sup><em></em></sup>p&lt;0.1; <sup><strong></strong></sup>p&lt;0.05; <sup></sup>p&lt;0.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4" style="text-align:left">
+This table utilizes probit regression to measure the association between accelerator founding sponsors and accelerator founding managing director backgrounds.
+</td>
+</tr>
+</table></div>
+</div>
+</div>
+<div id="statistical-analysis" class="section level2" number="4.2">
+<h2>
+<span class="header-section-number">4.2</span> Statistical Analysis<a class="anchor" aria-label="anchor" href="#statistical-analysis"><i class="fas fa-link"></i></a>
+</h2>
+<p>To further understand the mechanisms behind the relationship of startup acceleration and the several design elements that make up these programs, further statistical analysis and tests were conducted, namely linear regression (for correlation matrices), multiple linear regression, and probit regression.</p>
+<p>As previously theorized by <span class="citation">Tripathi, Oivo, et al. (<a href="references.html#ref-tripathi_startup_2019" role="doc-biblioref">2019</a>)</span>, accelerator performance can only be as good as the management and founders of the program. Third-generation incubators focus on networking and building their value proposition upon the connections made between the cohort and mentors. The relationship between founder backgrounds and accelerator sponsors is described in Table <a href="#tab:accsponmdback"><strong>??</strong></a> where one interaction stands out from the rest: investor-sponsored accelerators are more likely to have founders with academic experience. This is the only statistically significant result with <span class="math inline">\(\beta\)</span> = 0.682 and p-value &lt; 0.05. The lack of significance for the other variables suggests that founder and managing director backgrounds do not play a large role in the type of sponsor attracted to and engaged with by the part of accelerators.</p>
+<p> </p>
+<div class="inline-table"><table style="text-align:center" class="table table-sm">
+<caption>
+<strong>Background of Accelerator Founding Managing Directors Backgrounds and Accelerator Program Design Variables.</strong>
+</caption>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Prior Investor Exp.
+</td>
+<td>
+Prior Entrepreneur Exp.
+</td>
+<td>
+Prior Corporate Exp.
+</td>
+<td>
+Prior Academic Exp.
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+<td>
+(4)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Cohort Size
+</td>
+<td>
+0.024<sup>**</sup> (0.010)
+</td>
+<td>
+0.007 (0.008)
+</td>
+<td>
+0.005 (0.008)
+</td>
+<td>
+0.014<sup>*</sup> (0.008)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Focused Cohort Composition
+</td>
+<td>
+0.600<sup>**</sup> (0.296)
+</td>
+<td>
+0.443<sup>**</sup> (0.180)
+</td>
+<td>
+0.265 (0.181)
+</td>
+<td>
+0.502<sup>**</sup> (0.219)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Program Duration (in number of weeks)
+</td>
+<td>
+-0.026 (0.016)
+</td>
+<td>
+-0.009 (0.007)
+</td>
+<td>
+-0.005 (0.007)
+</td>
+<td>
+-0.009 (0.008)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Funding Provided (in thousands of )
+</td>
+<td>
+-0.00000 (0.00000)
+</td>
+<td>
+-0.00000 (0.00000)
+</td>
+<td>
+-0.00000 (0.00000)
+</td>
+<td>
+-0.00000 (0.00000)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Equity Taken
+</td>
+<td>
+0.056<sup>**</sup> (0.027)
+</td>
+<td>
+0.045<sup>**</sup> (0.019)
+</td>
+<td>
+0.047<sup>**</sup> (0.018)
+</td>
+<td>
+0.031 (0.020)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Provides External Mentors
+</td>
+<td>
+0.134 (0.360)
+</td>
+<td>
+0.045 (0.224)
+</td>
+<td>
+-0.074 (0.224)
+</td>
+<td>
+-0.012 (0.261)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Provides Formal Education
+</td>
+<td>
+-0.102 (0.338)
+</td>
+<td>
+0.138 (0.209)
+</td>
+<td>
+0.333 (0.209)
+</td>
+<td>
+0.402<sup>*</sup> (0.237)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Provides Workspace
+</td>
+<td>
+1.151<sup>**</sup> (0.530)
+</td>
+<td>
+0.327 (0.230)
+</td>
+<td>
+0.464<sup>**</sup> (0.236)
+</td>
+<td>
+0.195 (0.275)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Graduation Event
+</td>
+<td>
+-0.826<sup>*</sup> (0.472)
+</td>
+<td>
+-0.567<sup>*</sup> (0.293)
+</td>
+<td>
+-0.496<sup>*</sup> (0.290)
+</td>
+<td>
+-0.487 (0.321)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+-2.308<sup>***</sup> (0.690)
+</td>
+<td>
+-0.126 (0.372)
+</td>
+<td>
+-0.439 (0.369)
+</td>
+<td>
+-1.247<sup>***</sup> (0.421)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+216
+</td>
+<td>
+216
+</td>
+<td>
+216
+</td>
+<td>
+216
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Log Likelihood
+</td>
+<td>
+-55.093
+</td>
+<td>
+-140.269
+</td>
+<td>
+-139.963
+</td>
+<td>
+-96.234
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="4" style="text-align:left">
+<sup><em></em></sup>p&lt;0.1; <sup><strong></strong></sup>p&lt;0.05; <sup></sup>p&lt;0.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4" style="text-align:left">
+This table utilizes multiple linear regression to measure the association between accelerator founding managing director backgrounds and accelerator program design choices.
+</td>
+</tr>
+</table></div>
+<p>A better way to illustrate the impact of management and sponsorship on accelerated startups is to measure the relationship between these stakeholders and the design elements of the programs (Table <a href="#tab:mdbackaccdesign"><strong>??</strong></a> and <a href="#tab:accsponaccdesign"><strong>??</strong></a>). Furthering this demonstration is possible by relating these structural components to accelerator company performance which, for this research, is done as part of the answer to Hypothesis #1 in Section <a href="analysis-of-results.html#hypothesis1">4.4.1</a>.</p>
+<p>Analysing Table <a href="#tab:mdbackaccdesign"><strong>??</strong></a>, we observe that accelerators whose founders have prior investor experience tend to have a larger cohort size (<span class="math inline">\(\beta\)</span> = 0.024, p-value &lt; 0.05) with a focused composition (<span class="math inline">\(\beta\)</span> = 0.6, p-value &lt; 0.01) and provide a workspace for the teams (<span class="math inline">\(\beta\)</span> = 1.151, p-value &lt; 0.05). Since program graduation events are oftentimes showcase opportunities that bring together other entrepreneurs and investors to meet the participating startups, accelerator programs may disregard this opportunity in favour of the founder’s network of investors from previous ventures, thus revealing a lower probability of these accelerators hosting a demo day (<span class="math inline">\(\beta\)</span> = -0.826, p-value &lt; 0.1). In this scenario, the amount of equity taken also increases, as does in every model with founder and managing director backgrounds as the dependent variable (including those with an academic background but for which there is no statistical significance). Managers and founders with prior experience as entrepreneurs and with an academic background are also more likely to prefer focused cohorts (<span class="math inline">\(\beta\)</span> = 0.443, p-value &lt; 0.05; <span class="math inline">\(\beta\)</span> = 0.502, p-value &lt; 0.05, respectively). Leveraging their expertise on a specific industry vertical, professionals can support startup founders with specific knowledge and mentorship as well as connections to other companies and organizations.</p>
+<p>Accelerators providing startups with physical workspace or a co-working office for the duration of the program are likely to have founders with corporate or investor experience. The proximity between managers and teams may be a contributing factor to the success of startups. Non-remote work environments are the norm for most individuals who have previously worked under the umbrella of a firm, therefore preferring this type of interaction (<span class="math inline">\(\beta\)</span> = 0.464, p-value &lt; 0.05) whereas founders with experience as entrepreneurs may consider remote work as a viable alternative. Accelerators founded by those with an academic background were found to have a higher likelihood of including a structured mentorship and education plan in their program (<span class="math inline">\(\beta\)</span> = 0.402, p-value &lt; 0.1). This relationship could be an indicator for the preference of professor-student interactions observed in academic environments.</p>
+<p> </p>
+<div class="inline-table"><table style="text-align:center" class="table table-sm">
+<caption>
+<strong>Accelerator Founding Sponsors and Accelerator Program Design Variables.</strong>
+</caption>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Corporation Sponsor
+</td>
+<td>
+Government Sponsor
+</td>
+<td>
+Academia Sponsor
+</td>
+<td>
+Investor Sponsor
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+<td>
+(4)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Cohort Size
+</td>
+<td>
+0.003 (0.013)
+</td>
+<td>
+0.003 (0.008)
+</td>
+<td>
+0.003 (0.008)
+</td>
+<td>
+-0.009 (0.009)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Focused Cohort Composition
+</td>
+<td>
+-0.441 (0.297)
+</td>
+<td>
+0.249 (0.204)
+</td>
+<td>
+0.286 (0.206)
+</td>
+<td>
+-0.461<sup>**</sup> (0.226)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Program Duration (in number of weeks)
+</td>
+<td>
+-0.003 (0.011)
+</td>
+<td>
+0.027<sup>***</sup> (0.008)
+</td>
+<td>
+0.001 (0.007)
+</td>
+<td>
+0.002 (0.008)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Funding Provided (in thousands of )
+</td>
+<td>
+0.00000 (0.00000)
+</td>
+<td>
+0.00000 (0.00000)
+</td>
+<td>
+0.00000<sup>*</sup> (0.00000)
+</td>
+<td>
+0.00000 (0.00000)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Equity Taken
+</td>
+<td>
+0.003 (0.030)
+</td>
+<td>
+-0.047<sup>**</sup> (0.021)
+</td>
+<td>
+-0.032 (0.021)
+</td>
+<td>
+-0.032 (0.023)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Provides External Mentors
+</td>
+<td>
+1.166<sup>***</sup> (0.295)
+</td>
+<td>
+0.736<sup>**</sup> (0.293)
+</td>
+<td>
+0.141 (0.260)
+</td>
+<td>
+0.925<sup>***</sup> (0.246)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Provides Formal Education
+</td>
+<td>
+-0.482 (0.313)
+</td>
+<td>
+-0.228 (0.252)
+</td>
+<td>
+0.128 (0.236)
+</td>
+<td>
+-0.063 (0.257)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Provides Workspace
+</td>
+<td>
+-0.289 (0.378)
+</td>
+<td>
+0.190 (0.263)
+</td>
+<td>
+0.053 (0.257)
+</td>
+<td>
+0.014 (0.273)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Graduation Event
+</td>
+<td>
+-0.012 (0.435)
+</td>
+<td>
+0.061 (0.335)
+</td>
+<td>
+-0.052 (0.323)
+</td>
+<td>
+0.013 (0.338)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+1.273<sup>**</sup> (0.536)
+</td>
+<td>
+-2.024<sup>***</sup> (0.504)
+</td>
+<td>
+-1.213<sup>***</sup> (0.415)
+</td>
+<td>
+0.676 (0.420)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+216
+</td>
+<td>
+216
+</td>
+<td>
+216
+</td>
+<td>
+216
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Log Likelihood
+</td>
+<td>
+-48.013
+</td>
+<td>
+-105.188
+</td>
+<td>
+-102.307
+</td>
+<td>
+-86.336
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="4" style="text-align:left">
+<sup><em></em></sup>p&lt;0.1; <sup><strong></strong></sup>p&lt;0.05; <sup></sup>p&lt;0.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4" style="text-align:left">
+This table utilizes multiple linear regression to measure the association between accelerator founding sponsors and accelerator program design choices.
+</td>
+</tr>
+</table></div>
+<p>The linear model in Table <a href="#tab:accsponaccdesign"><strong>??</strong></a> depicts the relationship between accelerator design elements and sponsors. Those sponsored by corporations, governments and investors look to be in favour of providing mentorship with external entities (individuals or organisations) (<span class="math inline">\(\beta\)</span> = 1.166, p-value &lt;0.001; <span class="math inline">\(\beta\)</span> = 0.736, p-value &lt; 0.05; <span class="math inline">\(\beta\)</span> = 0.925, p-value &lt; 0.01, respectively). Sponsorships often entail the participation of external stakeholders in the acceleration program timeline. This cooperation benefits all parties: accelerators provide a better and wider network of connections, increasing their value proposition; startups gain access to knowledge and experience; and the sponsoring entities foster innovation, intrapreneurship, research and development, and the opportunity to increase their portfolio with early-stage investments.</p>
+<p>Opposite to the previous model, accelerators with a focused cohort have a higher likelihood of being involved with investor sponsors (<span class="math inline">\(\beta\)</span> = -0.461, p-value &lt; 0.05). No connection was found between the amount of funding provided and the type of sponsor chosen by accelerators, leading us to believe the two variables are not connected and do not influence one another in the context of this model.</p>
+<p> </p>
+<p> </p>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:illwell">Table 4.3: </span>Ill- and Well-Designed Accelerator Program Design Variables.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Ill-Designed Accelerator
+</th>
+<th style="text-align:center;">
+Well-Designed Accelerator
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Investor Sponsor
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Corporation Sponsor
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Government Sponsor
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Academia Sponsor
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Prior Investor Exp.
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Prior Entrepreneur Exp.
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Prior Corporate Exp.
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Prior Academic Exp.
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Program Duration (in number of weeks)
+</td>
+<td style="text-align:center;">
+18
+</td>
+<td style="text-align:center;">
+57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Funding Provided (in thousands of $)
+</td>
+<td style="text-align:center;">
+75
+</td>
+<td style="text-align:center;">
+48
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Equity Taken
+</td>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cohort Size
+</td>
+<td style="text-align:center;">
+13
+</td>
+<td style="text-align:center;">
+41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Focused Cohort Composition
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Provides External Mentors
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Provides Workspace
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Provides Formal Education
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Graduation Event
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+</tbody>
+</table></div>
+<p> </p>
+</div>
+<div id="defining-a-well-designed-accelerator-program" class="section level2" number="4.3">
+<h2>
+<span class="header-section-number">4.3</span> Defining a Well-Designed Accelerator Program<a class="anchor" aria-label="anchor" href="#defining-a-well-designed-accelerator-program"><i class="fas fa-link"></i></a>
+</h2>
+<p>Our dataset allows us to merge knowledge about accelerator program design and startup performance indicators. Filtering this information, we achieve the purpose of this chapter: to find trends regarding which accelerator design elements produce the best outcome for startups and therefore correspond to a well-designed accelerator.</p>
+<p>To define an ill-designed accelerator program, we began by filtering the dataset for all startups that did not receive more than $500K in the year after their acceleration program and those that did not have an exit of $1M or more. We then filtered all accelerators whose startups did not achieve values over the mean of the study group for both total raised and max valuation. Calculating the mean for each variable of these startups’ accelerators, the outputs are revealed in Table <a href="#tab:illdesigneddf"><strong>??</strong></a>. The inverse filter was applied to the dataset to find the startups better corresponding to the success parameters, with their accelerator’s design elements described in Table <a href="#tab:welldesigneddf"><strong>??</strong></a>. Inspecting the outputs, the next step was to construct an ill- and well-designed accelerator (Table <a href="analysis-of-results.html#tab:illwell">4.3</a>) which could be input in the model later described in the test of hypothesis for Hypothesis #1 in Section <a href="analysis-of-results.html#hypothesis1">4.4.1</a>. Test results for this analysis are found in Hypothesis #2 in Section <a href="analysis-of-results.html#hypothesis2">4.4.2</a>. It is relevant to state that, even though we are choosing to use the words “well” and “ill” to refer to an acceleration program’s design, we do so from the perspective of data.</p>
+</div>
+<div id="hypothesis-testing" class="section level2" number="4.4">
+<h2>
+<span class="header-section-number">4.4</span> Hypothesis Testing<a class="anchor" aria-label="anchor" href="#hypothesis-testing"><i class="fas fa-link"></i></a>
+</h2>
+<p>We began this dissertation by asserting the end goal: to understand the impact of startup accelerator program design variables in a graduated startup’s chance of success in the European context. This chapter is dedicated to providing answers to our research questions - RQ1 and RQ2 - employing tests of hypothesis.</p>
+<div id="hypothesis1" class="section level3" number="4.4.1">
+<h3>
+<span class="header-section-number">4.4.1</span> Hypothesis 1, H<sub>0</sub>: There Is No Significant Impact of an Accelerator’s Design Variables on the Performance Indicators of Its Accelerated Startups.<a class="anchor" aria-label="anchor" href="#hypothesis1"><i class="fas fa-link"></i></a>
+</h3>
+<p>The first hypothesis aims to clarify the impact of each accelerator variable on the outcome of accelerated startups, in answering RQ1 “Do accelerator program design variables affect a graduated startup’s chance of success?”. To interpret these associations, multiple linear regression models were implemented: one for each indicator. These models have performance metrics as the dependent variable and an array of design elements as the independent variables (reported in Table <a href="#tab:acccompanyperformanceaccdesign"><strong>??</strong></a>). The formula goes as follows, where <span class="math inline">\(\beta_0\)</span> is our constant, the intercept, <span class="math inline">\(\beta X_i\)</span> i are the regression coefficients applied to a vector of design choices and <span class="math inline">\(\epsilon_i\)</span> is the error term:</p>
+<p><span class="math display">\[ Performance_i = \beta_0 + \beta  X_i + \epsilon_i \]</span></p>
+<p> </p>
+<div class="inline-table"><table style="text-align:center" class="table table-sm">
+<caption>
+<strong>Accelerator Company Performance and Accelerator Program Design Variables.</strong>
+</caption>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Received &gt; 500K within 1 year
+</td>
+<td>
+Logged Total Raised
+</td>
+<td>
+Logged Max Valuation
+</td>
+<td>
+Exit of 1M or more
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+<td>
+(4)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Investor Sponsor
+</td>
+<td>
+0.037<sup>*</sup> (0.020)
+</td>
+<td>
+2.083<sup>***</sup> (0.323)
+</td>
+<td>
+-0.030 (0.269)
+</td>
+<td>
+-0.004 (0.004)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Corporation Sponsor
+</td>
+<td>
+0.063<sup>***</sup> (0.019)
+</td>
+<td>
+0.306 (0.309)
+</td>
+<td>
+0.038 (0.295)
+</td>
+<td>
+-0.008<sup>*</sup> (0.004)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Government Sponsor
+</td>
+<td>
+0.065<sup>***</sup> (0.017)
+</td>
+<td>
+1.141<sup>***</sup> (0.278)
+</td>
+<td>
+-0.209 (0.229)
+</td>
+<td>
+-0.001 (0.004)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Academia Sponsor
+</td>
+<td>
+-0.048<sup>**</sup> (0.020)
+</td>
+<td>
+-0.879<sup>***</sup> (0.332)
+</td>
+<td>
+-0.036 (0.276)
+</td>
+<td>
+-0.0005 (0.004)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Prior Investor Exp.
+</td>
+<td>
+0.062<sup>***</sup> (0.020)
+</td>
+<td>
+0.246 (0.321)
+</td>
+<td>
+0.108 (0.267)
+</td>
+<td>
+0.005 (0.004)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Prior Entrepreneur Exp.
+</td>
+<td>
+-0.111<sup>***</sup> (0.028)
+</td>
+<td>
+-1.358<sup>***</sup> (0.453)
+</td>
+<td>
+-0.997<sup>**</sup> (0.398)
+</td>
+<td>
+-0.007 (0.006)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Prior Corporate Exp.
+</td>
+<td>
+0.103<sup>***</sup> (0.028)
+</td>
+<td>
+1.110<sup>**</sup> (0.457)
+</td>
+<td>
+1.022<sup>***</sup> (0.389)
+</td>
+<td>
+0.005 (0.006)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Prior Academic Exp.
+</td>
+<td>
+-0.009 (0.018)
+</td>
+<td>
+-0.808<sup>***</sup> (0.290)
+</td>
+<td>
+-0.312 (0.221)
+</td>
+<td>
+0.002 (0.004)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Program Duration (in number of weeks)
+</td>
+<td>
+-0.001<sup>**</sup> (0.0005)
+</td>
+<td>
+0.011 (0.008)
+</td>
+<td>
+-0.005 (0.008)
+</td>
+<td>
+0.0001 (0.0001)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Funding Provided (in thousands of )
+</td>
+<td>
+-0.00000 (0.00000)
+</td>
+<td>
+0.00000 (0.00000)
+</td>
+<td>
+0.00000 (0.00000)
+</td>
+<td>
+-0.000 (0.00000)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Equity Taken
+</td>
+<td>
+0.005<sup>***</sup> (0.002)
+</td>
+<td>
+0.181<sup>***</sup> (0.025)
+</td>
+<td>
+-0.021 (0.023)
+</td>
+<td>
+-0.001 (0.0003)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Cohort Size
+</td>
+<td>
+0.003<sup>***</sup> (0.001)
+</td>
+<td>
+0.019<sup>*</sup> (0.010)
+</td>
+<td>
+0.036<sup>***</sup> (0.010)
+</td>
+<td>
+-0.00000 (0.0001)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Focused Cohort Composition
+</td>
+<td>
+0.002 (0.014)
+</td>
+<td>
+0.211 (0.228)
+</td>
+<td>
+-0.341<sup>*</sup> (0.197)
+</td>
+<td>
+-0.001 (0.003)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Provides External Mentors
+</td>
+<td>
+-0.045<sup>***</sup> (0.018)
+</td>
+<td>
+-0.555<sup>*</sup> (0.287)
+</td>
+<td>
+0.136 (0.231)
+</td>
+<td>
+0.004 (0.004)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Provides Workspace
+</td>
+<td>
+-0.063<sup>***</sup> (0.022)
+</td>
+<td>
+-0.263 (0.359)
+</td>
+<td>
+-0.737<sup>**</sup> (0.292)
+</td>
+<td>
+-0.002 (0.005)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Provides Formal Education
+</td>
+<td>
+0.011 (0.014)
+</td>
+<td>
+1.621<sup>***</sup> (0.234)
+</td>
+<td>
+-0.207 (0.205)
+</td>
+<td>
+-0.003 (0.003)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Graduation Event
+</td>
+<td>
+-0.166<sup>***</sup> (0.028)
+</td>
+<td>
+-1.873<sup>***</sup> (0.455)
+</td>
+<td>
+1.091<sup>***</sup> (0.365)
+</td>
+<td>
+0.006 (0.006)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+0.274<sup>***</sup> (0.036)
+</td>
+<td>
+6.943<sup>***</sup> (0.590)
+</td>
+<td>
+14.505<sup>***</sup> (0.535)
+</td>
+<td>
+0.014<sup>*</sup> (0.008)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Regression P-value
+</td>
+<td>
+0
+</td>
+<td>
+0
+</td>
+<td>
+0
+</td>
+<td>
+0.052
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+4,497
+</td>
+<td>
+4,497
+</td>
+<td>
+504
+</td>
+<td>
+4,497
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.051
+</td>
+<td>
+0.067
+</td>
+<td>
+0.132
+</td>
+<td>
+0.006
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="4" style="text-align:left">
+<sup><em></em></sup>p&lt;0.1; <sup><strong></strong></sup>p&lt;0.05; <sup></sup>p&lt;0.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4" style="text-align:left">
+This table utilizes multiple linear regression to measure the association between accelerator company performance and accelerator program design choices.
+</td>
+</tr>
+</table></div>
+<p>The dependent variables “Received &gt; $500K within 1 year” and “Exit of $1M or More” are binary, taking up the values 0 or 1, when true or false, respectively. “Total Raised” and “Max Valuation” variables were logged to account for skewness (as described in Section <a href="analysis-of-results.html#analysisstartups">4.1.2</a>). Independent variables are either discrete (“Program Duration” in number of weeks, “Funding Provided” in amount, “Equity Taken” in percentage, and “Cohort Size” in number of startups) or binary (with values 0 or 1, false or true, respectively): “Investor Sponsor”, “Corporation Sponsor”, “Government Sponsor”, “Academia Sponsor”, “Prior Investor Exp.”, “Prior Entrepreneur Exp.”, “Prior Corporate Exp.”, “Prior Academic Exp.”, “Focused Cohort Composition”, “Provides External Mentors”, “Provides Workspace”, “Provides Formal Education”, and “Graduation Event”.</p>
+<div id="received-500k-within-1-year" class="section level4" number="4.4.1.1">
+<h4>
+<span class="header-section-number">4.4.1.1</span> Received &gt; $500K within 1 year<a class="anchor" aria-label="anchor" href="#received-500k-within-1-year"><i class="fas fa-link"></i></a>
+</h4>
+<p>Multiple linear regressions were modelled for each dependent variable. In this case, we are trying to understand the impact of each startup design variable in their results the year following graduation from the acceleration program. Accelerators are meant to be a way to fast-track learning and market-fit for early-stage projects and companies and their completion is oftentimes signalled by a graduation event - a demo day. This event joins founders with other entrepreneurs and investors and is a great opportunity to start or continue work on the next rounds of investment.</p>
+<p>Results for the regression with the “Received &gt; $500K within 1 year” dependent variable (1) were shown to be significant, with a p-value &lt; 0.01. We can therefore reject the null hypothesis and state that the design elements of accelerators have an impact on the probability of their cohort participants raising more than $500K in the year after completing the program. It is now important to identify the type of impact each element produces.</p>
+<p>With the exception of Academia Sponsors (<span class="math inline">\(\beta\)</span> = -0.048, p-value &lt; 0.05), all other Sponsor types (Investor, Corporation, and Government) had a positive coefficient (<span class="math inline">\(\beta\)</span> = 0.037, p-value &lt; 0.1; <span class="math inline">\(\beta\)</span> = 0.063; p-value &lt; 0.01, <span class="math inline">\(\beta\)</span> = 0.065, p-value &lt; 0.01, respectively) meaning that, all other variables constant, a positive change in value for Sponsors will increase the chance of achieving the threshold of the indicator under analysis.</p>
+<p>As for accelerator managing directors and founders, results vary. Those with an investment background have a small but positive impact (<span class="math inline">\(\beta\)</span> = 0.062, p-value &lt; 0.01) and so do those with corporate experience, with a slightly larger coefficient (<span class="math inline">\(\beta\)</span> = 0.103, p-value &lt; 0.01). Managers who had previously founded other ventures had a negative impact on this indicator (<span class="math inline">\(\beta\)</span> = -0.111, p-value &lt; 0.01). No statistically significant relationship was found when analyzing managers with an academic background.</p>
+<p>The duration of the program revealed a small negative influence (<span class="math inline">\(\beta\)</span> = -0.001, p-value &lt; 0.05) on the performance indicator, whereas equity taken and cohort size had a limited but statistically significant positive impact (<span class="math inline">\(\beta\)</span> = 0.005, p-value &lt; 0.01, <span class="math inline">\(\beta\)</span> = 0.003, p-value &lt; 0.01, respectively). Focused cohort accelerators and those with a structured education plan had no statistically significant impact on immediate raised capital results though those providing external mentorship and a workspace influenced this parameter negatively (<span class="math inline">\(\beta\)</span> = -0.045, p-value &lt; 0.01, <span class="math inline">\(\beta\)</span> = -0.063, p-value &lt; 0.05, respectively). The design element with the greatest impact on this group was whether the accelerator provides a final graduation event: a negative coefficient (<span class="math inline">\(\beta\)</span> = -0.166) with statistical significance which seems to contradict the idea that these showcasing opportunities are useful for startups trying to locate interested backers.</p>
+<p>We have found that accelerators with investor, corporate, and government sponsors are more likely to cross the threshold of raising $500K in the year following their graduation from the program. The impact of managing directors and founders of this program isn’t felt as much but remains relevant in this context. Finally, in opposition to what was expected, the demo day was associated with a lower chance of raising large amounts of capital in the short-term.</p>
+</div>
+<div id="logged-total-raised" class="section level4" number="4.4.1.2">
+<h4>
+<span class="header-section-number">4.4.1.2</span> Logged Total Raised<a class="anchor" aria-label="anchor" href="#logged-total-raised"><i class="fas fa-link"></i></a>
+</h4>
+<p>Another measure for startup success is the total amount of raised capital. Although this indicator lacks specific information on the quality of the company and its market fit, it gives us important details on the size of the market where this firm is inserted, how attractive it is to investors and, in turn, how the accelerator may have influenced these characteristics. In this section, we model a multiple linear regression with the accelerators design variables and a logged value of the total amount of capital raised by its cohort of startups.</p>
+<p>The logged total raised dependent variable regression (2) is significant with a p-value &lt; 0.01. We can also reject the null hypothesis for this model and assume there is an impact of certain accelerator design elements on the amount of total capital raised by startups through their lifespan.</p>
+<p> </p>
+<p>The trend for sponsor impact in predicting total raised remains true when compared to the previously analyzed performance variable. Designing an accelerator with investor and government sponsors (<span class="math inline">\(\beta\)</span> = 2.083, p-value &lt; 0.01; <span class="math inline">\(\beta\)</span> = 1.141, p-value &lt; 0.01, respectively) appears to increase the chances of raising more capital. An academic sponsor presents a negative relationship to this same indicator (<span class="math inline">\(\beta\)</span> = -0.879, p-value &lt; 0.01).</p>
+<p>The tendency to mimic the previous performance indicator progresses onto the background of accelerator founders and managers. Proven entrepreneurs and those with a background in academia lower the chance of startups raising a larger amount (<span class="math inline">\(\beta\)</span> = -1.358, p-value &lt; 0.01; <span class="math inline">\(\beta\)</span> = -0.808, p-value &lt; 0.01, respectively) while accelerators founded by individuals with corporate experience tend to see better results in this metric (<span class="math inline">\(\beta\)</span> = 1.11, p-value &lt; 0.05). Investment backgrounds show no statistical significance and so does the program duration variable. The amount of equity accelerators take and the educational plan of the accelerator also show a positive and significant impact (<span class="math inline">\(\beta\)</span> = 0.181, p-value &lt; 0.01; <span class="math inline">\(\beta\)</span> = 1.621, p-value &lt; 0.01, respectively). Cohort size is positive but less significant (<span class="math inline">\(\beta\)</span> = 0.019, p-value &lt; 0.1) and the composition of the cohort shows no significance. Finally, as with the previous performance metric, accelerators with a demo day perform worse when related to this indicator (<span class="math inline">\(\beta\)</span> = -1.873, p-value &lt; 0.01).</p>
+<p>Our results indicate a positive relationship between startup performance and accelerators whose sponsors are from the investment industry and governmental organisations. We have also found that the impact of the managing directors of these programs is more impactful towards raising more investment should these have a background of working in the industry. Providing startups with a structured learning program also increased their chances of raising more capital but the idea that a final graduation event has a negative impact remains true.</p>
+</div>
+<div id="logged-max-valuation" class="section level4" number="4.4.1.3">
+<h4>
+<span class="header-section-number">4.4.1.3</span> Logged Max Valuation<a class="anchor" aria-label="anchor" href="#logged-max-valuation"><i class="fas fa-link"></i></a>
+</h4>
+<p>Understanding the long-term impact of certain accelerator design variables on their graduated startups can be partly achieved by looking at the next two variables. In the case of max valuation, we modelled a multiple linear regression to explain which of these have more influence on the way markets and investors value the accelerated firms.</p>
+<p>From the data collection process, information on company valuation proved to be the most difficult to find. For this reason, there is a discrepancy in the number of observations for model (3). Regardless, the logged max valuation regression outputs a p-value &lt; 0.01, leading us to reject the null hypothesis and state that the structural elements of an acceleration program have a statistically significant impact on the valuation of analyzed startups.</p>
+<p>All types of program sponsors prove to be statistically insignificant. Accelerator founder and managing directors with a background as entrepreneurs have a negative impact in predicting firm valuation (<span class="math inline">\(\beta\)</span> = -0.997, p-value &lt; 0.05) and those with corporate experience display a positive relationship in the same regard (<span class="math inline">\(\beta\)</span> = 1.022, p-value &lt; 0.01). Investor and academic backgrounds are not statistically significant when predicting this performance metric and neither are program duration, percentage of equity taken, external mentorship, and a formal education plan for startups. To strengthen the likelihood of a greater valuation, the number of startups in each cohort should be increased as (<span class="math inline">\(\beta\)</span> = 0.036, p-value &lt; 0.01), and the cohort composition focus should be set aside as it impacts this performance variable negatively, even if with reduced statistical significance (<span class="math inline">\(\beta\)</span> = -0.341, p-value &lt; 0.1). Providing a workspace for startups teams reduces total valuation (<span class="math inline">\(\beta\)</span> = -0.737, p-value &lt; 0.05) and a graduation event has the opposite effect (<span class="math inline">\(\beta\)</span> = 1.091, p-value &lt; 0.05).</p>
+<p>Startup valuation was found not to be severely impacted by an accelerator’s design. The type of sponsors chosen to be part of the program showed no effect on the likelihood of a higher maximum valuation for companies. In terms of founders and managing directors, corporate experience was again put in the spotlight as a good predictor of performance. In the case of this long-term metric, the previous trend for a negative impact of graduation events was felt in the opposite direction: startups with higher valuations are more likely to have been part of acceleration programs providing a demo day.</p>
+</div>
+<div id="exit-of-1m-or-more" class="section level4" number="4.4.1.4">
+<h4>
+<span class="header-section-number">4.4.1.4</span> Exit of $1M or More<a class="anchor" aria-label="anchor" href="#exit-of-1m-or-more"><i class="fas fa-link"></i></a>
+</h4>
+<p>The second measure for long-term startup performance concerns their exit value. This performance metric includes both IPOs and acquisitions and has been detailed by a multiple linear regression model. In this chapter, we aim to disclose the relationships occurring between the design elements of a startup accelerator and their startup’s probability of achieving an exit value of more than $1M.</p>
+<p>The implemented regression for the binary dependent variable “Exit of $1M or More” (4) is the only one out of the group which provides reduced statistical significance with a p-value = 0.052 or p-value &lt; 0.1. Singling out the fourth column of Table <a href="#tab:acccompanyperformanceaccdesign"><strong>??</strong></a>, we cannot reject the null hypothesis and thus conclude that the design variables of acceleration programs do not have an impact on the exit valuation of accelerated startups. However, it is important to point out some residual statistical significance present in the “Corporation Sponsor” variable which reflects negatively on the dependent variable (<span class="math inline">\(\beta\)</span> = -0.008, p-value &lt; 0.1). We also point out that most variables, even if not statistically significant, feature a negative value.</p>
+<p>Our test results indicate that there is no proven relationship between an accelerator’s design variables and a startup’s long-term performance.</p>
+</div>
+<div id="hypothesis-1-overview" class="section level4" number="4.4.1.5">
+<h4>
+<span class="header-section-number">4.4.1.5</span> Hypothesis 1: Overview<a class="anchor" aria-label="anchor" href="#hypothesis-1-overview"><i class="fas fa-link"></i></a>
+</h4>
+<p>A final consideration to be made on these regressions concerns the funding provided by accelerators, oftentimes in exchange for equity. As tested in Table <a href="#tab:acccompanyperformanceaccdesign"><strong>??</strong></a>, all <span class="math inline">\(\beta\)</span>s near zero and there is no statistical significance when relating this design element to the startup performance indicators in review. Overall, three out of the four dependent variables showed statistical significance when modelled for multiple linear regressions and thus we are led to reject the null hypothesis that there is no significant impact of an accelerator’s design variables on the performance indicators of its accelerated startups. We conclude that accelerators can be designed in order to increase the chances of success for startups that go through their programs. We were also able to establish stronger relationships between short-term performance metrics than those associated with a startup’s long-term goals. This lack of correlation suggests one of two things: either the impact of acceleration is limited to the years directly after their graduation or there are other factors at play. Moving to the next test of hypothesis, we will further analyse these mechanisms.</p>
+</div>
+</div>
+<div id="hypothesis2" class="section level3" number="4.4.2">
+<h3>
+<span class="header-section-number">4.4.2</span> Hypothesis 2, H<sub>0</sub>: Performance of Startups Graduating from Well-Designed Accelerators Is Not Greater than That of Startups Graduating from Ill-Designed Accelerators.<a class="anchor" aria-label="anchor" href="#hypothesis2"><i class="fas fa-link"></i></a>
+</h3>
+<p>The second hypothesis to be tested delves deeper into the question of how and when, in the lifespan of a startup, the impact of participating in an acceleration program is felt. This test of hypothesis aims to answer RQ2 “Are there performance differences between startups who graduated from ill- and well-designed accelerator programs?”. We begin by detailing the perfect ill- and well-designed accelerators and then proceed to put one against the other, hoping to measure any differences in the performance of accelerated startups.</p>
+<p>After filtering our dataset through the performance indicators, Tables <a href="#tab:illdesigneddf"><strong>??</strong></a> and <a href="#tab:welldesigneddf"><strong>??</strong></a> reflect the characteristics of an ill- and well-designed accelerator, summarised in Table <a href="analysis-of-results.html#tab:illwell">4.3</a>. Inputting this data into each multiple linear regression model described in Hypothesis #1 in Section <a href="analysis-of-results.html#hypothesis1">4.4.1</a> (one per performance metric), we get fitted and confidence interval values. We proceeded to compute independent, two-sample T-Tests for all performance variables. These tests were designed to assess if the difference in means of metrics for ill- and well-designed accelerators is greater than 0, therefore indicating an increase in performance between startups graduating from well-designed accelerators. Tests conducted for each company performance variable point out different results.</p>
+<p> </p>
+<div class="inline-table"><table style="text-align:center" class="table table-sm">
+<caption>
+<strong>Ill and Well-designed Accelerators, Received &gt; within 1 year: Two Sample T-Test.</strong>
+</caption>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+T-Test
+</td>
+<td>
+Values
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+t
+</td>
+<td>
+2.916647
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+df
+</td>
+<td>
+3.867084
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+p-value
+</td>
+<td>
+0.02260685
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+alternative hypothesis
+</td>
+<td>
+true difference in means is greater than 0
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td colspan="2" style="text-align:left">
+<em>Note:</em> Welch Two Sample t-test
+</td>
+</tr>
+</table></div>
+<div class="inline-table"><table style="text-align:center" class="table table-sm">
+<caption>
+<strong>Ill and Well-designed Accelerators, Total Raised: Two Sample T-Test.</strong>
+</caption>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+T-Test
+</td>
+<td>
+Values
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+t
+</td>
+<td>
+5.620741
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+df
+</td>
+<td>
+3.867084
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+p-value
+</td>
+<td>
+0.002722757
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+alternative hypothesis
+</td>
+<td>
+true difference in means is greater than 0
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td colspan="2" style="text-align:left">
+<em>Note:</em> Welch Two Sample t-test
+</td>
+</tr>
+</table></div>
+<p> </p>
+<div class="inline-table"><table style="text-align:center" class="table table-sm">
+<caption>
+<strong>Ill and Well-designed Accelerators, Max Valuation: Two Sample T-Test.</strong>
+</caption>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+T-Test
+</td>
+<td>
+Values
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+t
+</td>
+<td>
+1.114704
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+df
+</td>
+<td>
+3.813443
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+p-value
+</td>
+<td>
+0.1651271
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+alternative hypothesis
+</td>
+<td>
+true difference in means is greater than 0
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td colspan="2" style="text-align:left">
+<em>Note:</em> Welch Two Sample t-test
+</td>
+</tr>
+</table></div>
+<div class="inline-table"><table style="text-align:center" class="table table-sm">
+<caption>
+<strong>Ill and Well-designed Accelerators, Exit of or more: Two Sample T-Test.</strong>
+</caption>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+T-Test
+</td>
+<td>
+Values
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+t
+</td>
+<td>
+0.5211857
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+df
+</td>
+<td>
+3.867084
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+p-value
+</td>
+<td>
+0.3153272
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+alternative hypothesis
+</td>
+<td>
+true difference in means is greater than 0
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td colspan="2" style="text-align:left">
+<em>Note:</em> Welch Two Sample t-test
+</td>
+</tr>
+</table></div>
+<p> </p>
+<p> </p>
+<p>A well-designed accelerator, when compared to an ill-designed accelerator, demonstrated a significant increase in means for “Received &gt; $500K within 1 year” with t = 2.917 and p-value &lt; 0.05. The same test group indicated significantly larger amounts of “Total Raised” with t = 5.621 and p-value &lt; 0.01. Regarding “Max Valuation”, no significant increase was found with t = 1.115 and p-value &gt; 0.05. Lastly, well-designed accelerators were not found to have a higher chance of achieving an “Exit of $1M or More” with t = 0.521 and p-value &gt; 0.05. Consequently, we can reject the null hypothesis for the “Received &gt; $500K within 1 year” and “Total Raised” company performance variables but not for “Max Valuation” and “Exit of $1M or More” .</p>
+<p>The choice to conduct tests in this manner, using only the predicted ill- and well-designed accelerators, instead of using the complete dataset of 216 accelerators resides in the filters chosen for their classification. For example, using a T-Test to compare well-designed acceleration programs whose startups “Received &gt; $500K within 1 year” - or any other performance variable - against those ill-designed who did not would always indicate a positive significance difference.</p>
+<div id="hypothesis-2-overview" class="section level4" number="4.4.2.1">
+<h4>
+<span class="header-section-number">4.4.2.1</span> Hypothesis 2: Overview<a class="anchor" aria-label="anchor" href="#hypothesis-2-overview"><i class="fas fa-link"></i></a>
+</h4>
+<p>In short, we reject the null hypothesis that the performance of startups graduating from well-designed accelerators is not greater than that of startups graduating from ill-designed accelerators. Of the four tests, half revealed statistical significance, rejecting the null hypothesis. We hypothesise that the impact of acceleration is not limited to the years after the startups’ graduation. Accelerators who perfect the design of their programs have a longer-lasting, positive impact on their cohorts, even if restricted to the amount of raised capital as impact on valuation and exits is limited.</p>
+</div>
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="research-methodology.html"><span class="header-section-number">3</span> Research Methodology</a></div>
+<div class="next"><a href="conclusion-and-implications.html"><span class="header-section-number">5</span> Conclusion and Implications</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#analysis-of-results"><span class="header-section-number">4</span> Design Elements and Performance Indicators: An Analysis of Results</a></li>
+<li>
+<a class="nav-link" href="#sample-analysis"><span class="header-section-number">4.1</span> Sample Analysis</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#accelerators"><span class="header-section-number">4.1.1</span> Accelerators</a></li>
+<li><a class="nav-link" href="#analysisstartups"><span class="header-section-number">4.1.2</span> Startups</a></li>
+<li><a class="nav-link" href="#typologyclassification"><span class="header-section-number">4.1.3</span> Typology</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#statistical-analysis"><span class="header-section-number">4.2</span> Statistical Analysis</a></li>
+<li><a class="nav-link" href="#defining-a-well-designed-accelerator-program"><span class="header-section-number">4.3</span> Defining a Well-Designed Accelerator Program</a></li>
+<li>
+<a class="nav-link" href="#hypothesis-testing"><span class="header-section-number">4.4</span> Hypothesis Testing</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#hypothesis1"><span class="header-section-number">4.4.1</span> Hypothesis 1, H0: There Is No Significant Impact of an Accelerator’s Design Variables on the Performance Indicators of Its Accelerated Startups.</a></li>
+<li><a class="nav-link" href="#hypothesis2"><span class="header-section-number">4.4.2</span> Hypothesis 2, H0: Performance of Startups Graduating from Well-Designed Accelerators Is Not Greater than That of Startups Graduating from Ill-Designed Accelerators.</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/simaonogueira101/winning-dissertation/blob/master/index.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/simaonogueira101/winning-dissertation/edit/master/index.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Winning the Startup Game</strong>: A Study on the Design of European Startup Accelerators" was written by Simão Policarpo Nogueira. It was last built on January 5, 2022.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

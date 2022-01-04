@@ -1,0 +1,47 @@
+\clearpage
+
+# Research Methodology
+
+In the first two chapters of this dissertation, we established the status quo of startup acceleration and gave a brief overview of a study conducted by @cohen_design_2019 on the design of startup accelerators. Their approach to research in the context of company incubation and startup accelerators inspired the methodology introduced in the following chapter. Through a quantitative, data-driven analysis, we aim to answer the previously introduced question: what sort of impact do startup accelerators have on their cohort of companies and projects?
+
+## Research Approach
+
+As asserted before, even though the impact of accelerators has been the target of research, due to a lack of available data, publications on this matter are scarce [@cohen_accelerating_2014]. From the very beginning of the research process, a key obstacle was in fact where to find available data for both the design elements of startup accelerators and for the success indicators of accelerated startups.
+
+Taking clues from @cohen_design_2019, we began by looking into [F6S](https://www.f6s.com/), an online community where founders can interact with companies, organisations, and investors. With its roots in 2012, the F6S community was founded by managers at two acceleration programs, both of which are in our database: Startupbootcamp and Springboard. Applying their knowledge of the field, this platform was built to host a range of application forms and information regarding available incubation and acceleration programs. From a humble beginning with just 130 acceleration programs, F6S currently hosts 2402 listings within this same category and reaches over 4 million users [@f6s_press_2012]. Even though this community is certainly helpful for all startups, mentors, founders and entrepreneurs that use it, the available data was largely incomplete leading us to find alternatives.
+
+In came [Crunchbase](https://www.crunchbase.com/), "a prospecting platform for dealmakers who want to search less and close more" [@crunchbase_2021]. Founded by [TechCrunch](https://techcrunch.com) - an online publication with a focus on technology and the startup ecosystem - in 2007, Crunchbase is currently a standalone company still benefiting from its inherent connection to the venture building industry. Crunchbase's data is collected through a range of self-developed crowdsourcing mechanisms such as in-house data experts, partners, and other contributors. Access is limited behind a paywall - the business model for this company - and their data is verified and updated regularly, ensuring its validity. Their usage of artificial intelligence and machine learning fast-forwards the limitations associated with the process of collecting data by hand. The network effects of their large community of users that add, edit and verify information also positively influence the outlook and trust in the information they provide. Not only does Crunchbase host data on accelerators, covering some of the high-level details of the available programs, they also provide various types of information on accelerated companies, investments, founders, directors, and many others. Through contacts with the team behind their [Academic Research Access Program](https://about.crunchbase.com/partners/academic-research-access/), access to their complete Application Programming Interface (API) was granted for this research, therefore accelerating the rate at which the required datasets were completed.
+
+As opposed to the reference study which used data available on the Seed Accelerator Rankings Project complemented by interviews with accelerators [@cohen_design_2019], this solely analytical approach presented its challenges as data was often incomplete or missing and required dozens of hours of archival research on company pages, news, governmental and academic websites and social media.
+
+## Data Collection
+
+<!-- Keeping in line with the previously introduced analytical approach and lack of available data, to overcome the large amount of information that required processing, data collection was programmatically conducted whenever possible. -->
+
+Data collection was conducted programmatically whenever possible. Initially, for the F6S platform which does not make any APIs publicly available, a [Python](https://www.python.org) web scraper was developed. This data was filtered with the type keyword "Accelerator" and location keyword "Europe", yielding a dataset with 491 accelerator programs. This dataset contained incomplete data points on "Cohort Size", "Cohort Composition", "Program Duration", "Funding Provided", "Availability of Co-working Space", and "Accelerator Location" (as part of the accelerator design variables described in Section \@ref(review-design-elements)).
+
+Having attained access to the Crunchbase Enterprise API [@crunchbase_documentation_2021], the process for obtaining the required data progressed as follows, per the structure of this interface, available in Appendix \@ref(crunchbasedocs):
+
+&nbsp;
+
+1.  "Location" data was requested from Crunchbase and filtered for "European Union (EU)" and "United Kingdom" to access its "location_identifiers" (Table \@ref(tab:crunchlocation)).
+
+2.  Organization data was requested with filters "investor_type" and "location_identifiers" and values "accelerator" and the previously identified "location_identifiers" respectively, resulting in a list of accelerators and data points for analysis, as depicted in Table \@ref(tab:crunchaccelerator).
+
+3.  Information on founders (Table \@ref(tab:crunchacceleratorfounder)) was requested for all accelerators found in step 2.
+
+4.  Data on investments from the accelerators returned on step 2 was requested and filtered by "funding_round_investment_type" with values "seed" and "pre_seed". The data points collected at this step are described in Table \@ref(tab:crunchacceleratorinvestment).
+
+5.  After collecting all investments from these accelerators, information on the invested companies was requested, returning the data points listed in Table \@ref(tab:crunchstartup).
+
+## Data Analysis
+
+All data requested from Crunchbase was exported as a JavaScript Object Notation (JSON) response, a standard method for this type of API and converted to a data format for analysis in the [R](https://www.r-project.org) programming language. Further data processing was required to match the two sources (F6S and Crunchbase). Finally, to complete the dataset with the required information, additional research was conducted on a case-by-case basis, visiting accelerators and their stakeholders' websites as well as news articles and other sources of information including government agencies and data aggregators. The [Internet Archive platform](https://web.archive.org) was useful for this component of the data collection as many of the accessed links for accelerators and their press releases were no longer available online.
+
+From an initial 886 accelerators and 7429 startups, completed datasets were achieved for `r nrow(acc_design_choices)` accelerators and `r nrow(acc_company_performance)` startups - values which are similar to those available in the reference paper by @cohen_design_2019 that studied 146 accelerators and 5921 startups. The significant reduction in the amount of available and used information comes as a result of a large number of accelerators not disclosing their investments and therefore not providing relevant information to be considered in this study.
+
+For the analysis and writing of results, the R programming language [@r_2020] was chosen due to its statistical packages and integration with markdown in the form of R Markdown [@rmd_dynamic_2021; @rmd_definitive_2018; @rmd_cookbook_2020]. A similar analysis structure to that of the reference study by @cohen_design_2019 is used to test against the hypotheses in question, through summary statistics and linear regressions. In increasing reproducibility of this research, an online version of this dissertation, data and code were made available (https://masters.policarponogueira.com/).
+
+<!-- > “Based on this wealth of data, we produce summary statistics and linear regression estimates to illuminate three key dimensions of accelerators: program elements, sponsor identities, and accelerator founder backgrounds. We then provide descriptive regressions that shed light on the correlations and associations between these different elements and measures of performance of the accelerator graduates.” -->
+<!-- > -->
+<!-- > [@cohen_design_2019] -->

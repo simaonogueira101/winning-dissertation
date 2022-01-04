@@ -1,0 +1,24 @@
+# Welcome! {.unnumbered}
+
+&nbsp;
+
+::: {.row}
+:::::: {.col-sm-6}
+This website is an online version of the Dissertation submitted in partial fulfillment of requirements for the `r rmarkdown::metadata$program` at the [Universidade Católica Portuguesa](http://clsbe.lisboa.ucp.pt/), written under the supervision of `r rmarkdown::metadata$supervisor`.
+
+::::::::: {.byline}
+`r rmarkdown::metadata$author` \
+`r rmarkdown::metadata$date`
+:::::::::
+::::::
+
+:::::: {.col-sm-6 .thesis-cover}
+<img src="./writing/figures/cover.jpg" alt="Download PDF" class="img-fluid"/>
+::::::
+:::
+
+&nbsp;
+
+`r rmarkdown::metadata$description`
+
+You are welcome to read through our research and reach the author through the information in Section \@ref(author-contacts).

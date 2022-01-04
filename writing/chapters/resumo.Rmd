@@ -1,0 +1,11 @@
+\clearpage
+
+# Resumo {-}
+
+**Title:** `r rmarkdown::metadata$title`:  `r rmarkdown::metadata$subtitle`   
+**Author:** `r rmarkdown::metadata$author`   
+**Palavras-chave:** Incubadoras; Aceleradoras; Startups; Empreendedorismo; Inovação.
+
+&nbsp;
+
+O panorama Europeu de startups e investimento tem vindo a desenvolver-se rapidamente: identificaram-se níveis recorde de crescimento em 2021, revelando que o ecossistema carece apenas de maturidade. As aceleradoras de startups - a nova geração de incubadoras -, lado-a-lado com esta expansão, tornaram a aceleração num negócio de sucesso. Da mesma forma que a investigação continua a discordar sobre as suas definições conceptuais e tipológicas, o impacto e a estrutura ideal das aceleradoras permanecem pouco claros. Esta dissertação visa transpor um estudo realizado no ecossistema dos EUA para a realidade Europeia através da utilização de dados e estatística, ao analisar as relações entre as variáveis que compõem os programas de aceleração e o sucesso - ou falta dele - das startups que os completam. Os dados foram recolhidos através de uma série de agregadores, notícias e websites, e inseridos em modelos de regressão linear a fim de testar a hipótese de que a estrutura de uma aceleradora tem impacto na probabilidade de sucesso das suas startups. Os nossos resultados reflectem os efeitos positivos de uma grande e diversificada rede de parceiros, patrocinadores, fundadores e empresas, mas tiveram dificuldade em explicar na íntegra os mecanismos por detrás do sucesso da aceleração. Os nossos dados permitiram distinguir entre aceleradoras mal e bem concebidas, estabelecendo que o impacto das segundas é mais forte tanto a curto quanto a longo prazo, dando lugar à proposta de uma estrutura para uma aceleradora que maximiza as hipóteses de sucesso das startups.

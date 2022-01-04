@@ -1,0 +1,613 @@
+\clearpage
+
+# Design Elements and Performance Indicators: An Analysis of Results {#analysis-of-results}
+
+In the previous chapter, we explained how data for `r nrow(acc_design_choices)` accelerators and `r nrow(acc_company_performance)` startups was obtained. The following analysis describes the collected data and puts it through statistical models to present the results for the tests of hypothesis.
+
+## Sample Analysis
+
+### Accelerators
+
+Our sample contains `r nrow(acc_design_choices)` accelerators distributed by `r nrow(acc_geo_countries)` countries in the European region (Figure \@ref(fig:accgeo)). The two countries with the largest number of accelerators - the United Kingdom and Germany - account for over 50% of all analyzed programs, making them true hotspots for early- and seed-stage investments and interesting study objects for the purpose of this research (Table \@ref(tab:accgeodist)).
+
+```{r accgeo, fig.cap="Accelerator Geographic Distribution.", out.width='95%', fig.align = 'center', echo=FALSE}
+
+acc_geo_map_points
+
+```
+
+\onehalfspacing
+
+`r if(knit_type == "latex"){"\\begin{minipage}{0.47\\textwidth}"}`
+```{r accgeodist, echo=FALSE, results='asis'}
+
+kable(
+  acc_geo_countries,
+  caption = "Accelerator Geographic Distribution.",
+  booktabs = TRUE
+) %>%
+  kable_styling(
+    font_size = table_font_size_kable,
+    full_width = TRUE,
+    latex_options = c(
+      "HOLD_position"
+    )
+  )
+
+```
+`r if(knit_type == "latex"){"\\end{minipage}"}`
+`r if(knit_type == "latex"){"\\qquad"}`
+`r if(knit_type == "latex"){"\\begin{minipage}{0.47\\textwidth}"}`
+```{r addindustry, echo=FALSE, results='asis'}
+
+kable(
+  acc_industry_clusters_df %>% select(acc_industry_clusters_list, Percentage),
+  caption = "Accelerator Industry Category Variation.",
+  col.names = acc_industry_clusters_verbose,
+  booktabs = TRUE,
+  align = "lr"
+) %>%
+  kable_styling(
+    font_size = table_font_size_kable,
+    full_width = TRUE,
+    latex_options = c(
+      "HOLD_position"
+    )
+  )
+
+basic_services <- acc_industry_clusters_df %>% filter(
+  (acc_industry_clusters_list == "Financial Services") |
+  (acc_industry_clusters_list == "Lending and Investments") |
+  (acc_industry_clusters_list == "Professional Services")
+) %>% select(Freq) %>% sum()
+
+it_services <- acc_industry_clusters_df %>% filter(
+  (acc_industry_clusters_list == "Information Technology") |
+  (acc_industry_clusters_list == "Software") |
+  (acc_industry_clusters_list == "Internet Services")
+) %>% select(Freq) %>% sum()
+
+education_services <- acc_industry_clusters_df %>% filter(
+  (acc_industry_clusters_list == "Education")
+) %>% select(Freq) %>% sum()
+
+basic_services <- round(basic_services / acc_industry_clusters_df$Freq %>% sum() * 100, 0)
+it_services <- round(it_services / acc_industry_clusters_df$Freq %>% sum() * 100, 0)
+education_services <- round(education_services / acc_industry_clusters_df$Freq %>% sum() * 100, 0)
+
+```
+`r if(knit_type == "latex"){"\\end{minipage}"}`
+
+&nbsp;
+
+&nbsp;
+
+```{r accvars, results="asis"}
+
+stargazer(
+  acc_design_choices_desc %>% mutate(
+    funding_provided = funding_provided / 1000
+  ),
+  type = table_output,
+  title = "Accelerator Program Design Variables: Summary Statistics.",
+  header = FALSE,
+  covariate.labels = if(knit_type == "latex"){acc_design_choices_verbose} else {acc_design_choices_verbose_html},
+  single.row = TRUE,
+  font.size = table_font_size,
+  column.sep.width = "1pt",
+  no.space = TRUE,
+  omit.summary.stat = c("p25", "p75"),
+  label = "tab:accvars",
+  table.placement = 'H'
+)
+
+non_focused <- round(mean(acc_design_choices_desc$cohort_composition) * 100, 1)
+edu_prog <- round(mean(acc_design_choices_desc$educational_programming) * 100, 1)
+coh_size <- round(mean(acc_design_choices_desc$cohort_size))
+prog_dur <- round(mean(acc_design_choices_desc$program_duration))
+fund <- round(mean(acc_design_choices_desc$funding_provided))
+equi <- round(mean(acc_design_choices_desc$equity_taken))
+demo <- round(mean(acc_design_choices_desc$graduation_event) * 100, 1)
+
+```
+
+\setstretch{1.5}
+
+As for accelerator industry clustering, "Financial Services", "Lending and Investments", and "Professional Services" make up over `r basic_services`% of the distribution. These categories represent the basic services offered by accelerators to their cohort of startups and were part of the definition of non-focused cohort compositions (which describes `r non_focused`% of researched programs). The most relevant focused industry clusters include "Information Technology", "Software" and "Internet Services" (over `r it_services`% of the distribution). During our research, we were able to confirm this statement: a large number of the studied programs engaged with tech startups regardless of their commitment to other specific industries.
+
+Although the percentage of accelerators that include the "Education" industry cluster is relatively small (\~`r education_services`%), the percentage of those whose design choices include "Provides Formal Education" is much higher (`r edu_prog`%). This disparity brings out the challenges of defining certain aspects of acceleration programs as previously stated and following @cohen_accelerating_2014. Accelerators were found to have an average cohort size of `r coh_size` startups and a duration of `r prog_dur` weeks (close to `r round(prog_dur/4,0)` months). The longest observed program ran for a full three years. Acceleration funding averaged \$`r fund` with `r equi`% equity in return for the provided services and mentorship. Most programs offered a workspace for startup teams and some form of external mentorship with their corporate, governmental, academic, or investor sponsors and stakeholders. `r demo`% of accelerators chose to showcase the work of their cohort with a final graduation event, oftentimes referred to as demo day.
+
+There are other components that make up the design of an accelerator program, considered in Tables \@ref(tab:accgeodist) to \@ref(tab:accvars): the backgrounds of founders and managing directors and the program's sponsors. In Section \@ref(reviewmanagementimpact) we made the case for the importance of these stakeholders especially in the strategy and entry criteria of the program.
+
+&nbsp;
+
+\onehalfspacing
+
+```{r, results="asis"}
+
+stargazer(
+  md_backgrounds_desc,
+  type = table_output,
+  title = "Accelerator Founding Managing Director Backgrounds: Summary Statistics.",
+  header = FALSE,
+  covariate.labels = md_backgrounds_verbose,
+  single.row = TRUE,
+  font.size = table_font_size,
+  column.sep.width = "1pt",
+  no.space = TRUE,
+  omit.summary.stat = c("p25", "p75"),
+  label = "tab:mdbackgroundsdesc",
+  table.placement = 'H'
+)
+
+stargazer(
+  md_backgrounds_corr,
+  summary = FALSE,
+  type = table_output,
+  title = "Accelerator Founding Managing Director Backgrounds: Correlation.",
+  header = FALSE,
+  single.row = TRUE,
+  font.size = table_font_size,
+  column.sep.width = "1pt",
+  no.space = TRUE,
+  notes="\\textit{Note:} *p<0.1; **p<0.05; ***p<0.01",
+  label = "tab:mdbackgroundscorr",
+  table.placement = 'H'
+)
+
+prev_found <- round(mean(md_backgrounds_desc$advisory_and_managing_directors_prior_entrepreneur) * 100, 1)
+prev_corp <- round(mean(md_backgrounds_desc$advisory_and_managing_directors_prior_corporate_exp) * 100, 1)
+prev_inv <- round(mean(md_backgrounds_desc$advisory_and_managing_directors_prior_investor) * 100, 1)
+prev_acad <- round(mean(md_backgrounds_desc$advisory_and_managing_directors_prior_university_exp) * 100, 1)
+
+```
+
+\setstretch{1.5}
+
+Of all program founders and managing directors, `r prev_found`% were found to have experience founding other companies or organizations whereas `r prev_corp`% had previously held a corporate job (Table \@ref(tab:mdbackgroundsdesc)). These two attributes describe a strong positive correlation with statistical significance - the strongest of the matrix -, leading us to believe that many founders first gained experience by working with other professionals and then went on to create their own companies. Data also reveals that `r prev_inv`% of founders and managing directors had experience as investors and `r prev_acad`% had prior academic experience.
+
+Founders with prior experience as investors are the least likely to be closely related to academia while those with corporate experience are the most likely. Correlations between founder backgrounds are all positive and statistically significant (Table \@ref(tab:mdbackgroundscorr)).
+
+&nbsp;
+
+\onehalfspacing
+
+```{r, results="asis"}
+
+stargazer(
+  founding_sponsors_desc,
+  type = table_output,
+  title = "Accelerator Founding Sponsors: Summary Statistics.",
+  header = FALSE,
+  covariate.labels = founding_sponsors_verbose,
+  single.row = TRUE,
+  font.size = table_font_size,
+  column.sep.width = "1pt",
+  no.space = TRUE,
+  omit.summary.stat = c("p25", "p75"),
+  label = "tab:foundingsponsorsdesc",
+  table.placement = 'H'
+)
+
+stargazer(
+  founding_sponsors_corr,
+  summary = FALSE,
+  type = table_output,
+  title = "Accelerator Founding Sponsors: Correlation.",
+  header = FALSE,
+  single.row = TRUE,
+  font.size = table_font_size,
+  column.sep.width = "1pt",
+  no.space = TRUE,
+  notes="\\textit{Note:} *p<0.1; **p<0.05; ***p<0.01",
+  label = "tab:foundingsponsorscorr",
+  table.placement = 'H'
+)
+
+spons_corp <- round(mean(founding_sponsors_desc$external_stakeholders_corporations) * 100, 1)
+spons_inv <- round(mean(founding_sponsors_desc$external_stakeholders_investors) * 100, 1)
+spons_gov <- round(mean(founding_sponsors_desc$external_stakeholders_governments) * 100, 1)
+spons_acad <- round(mean(founding_sponsors_desc$external_stakeholders_academia) * 100, 1)
+ 
+```
+
+\setstretch{1.5}
+
+Apparent in the data (Table \@ref(tab:foundingsponsorsdesc)) is the proximity between acceleration programs and other corporations with `r spons_corp`% of these having close connections to a corporate sponsor. Data reveals that it is almost as important for accelerators to partner with investor sponsors: `r spons_inv`% of all programs included investors in their activities, be it throughout the program as mentors and advisors or as prospective backers present in the graduation events. Accelerators with corporate sponsors were shown to be correlated to those with investor sponsors as the data discloses a weak, positive correlation with statistical significance (Table \@ref(tab:foundingsponsorscorr)).
+
+A quarter (`r spons_gov`%) of all accelerators were found to be linked to government institutions and `r spons_acad`% akin to an academic institution. The correlation coefficient between the latter is also weak but positive and statistically significant. Some associations were also found between government and corporation sponsors and between investor and academia sponsors but these are weaker and show less statistical significance.
+
+### Startups {#analysisstartups}
+
+```{r}
+
+raise <- round(mean(acc_company_performance_desc$total_raised) / 1000000, 1)
+raise500 <- round(mean(acc_company_performance_desc$received_500k) * 100, 1)
+exit <- round(mean(acc_company_performance_desc$exit_of_1m) * 100, 1)
+val_min <- min(acc_company_performance_desc %>% filter(max_valuation > 0) %>% select(max_valuation) / 1000)
+val_max <- round(max(acc_company_performance_desc %>% filter(max_valuation > 0) %>% select(max_valuation) / 1000000000), 0)
+
+```
+
+Our sample of startups has `r nrow(acc_company_performance_desc)` complete observations with companies raising \$`r raise`M on average. This value includes both the acceleration investments and any other rounds these firms may have been part of. Having access to the funding history of the analyzed startups, we were able to calculate the amount of raised capital in the year following the end of the acceleration program undergone by the company. `r raise500`% of all startups raised at least \$500K in this period (Table \@ref(tab:acccompanyperformancedesc)).
+
+&nbsp;
+
+\onehalfspacing
+
+```{r, results="asis"}
+
+stargazer(
+  acc_company_performance_desc %>% mutate(
+    total_raised = total_raised / 1000000,
+    max_valuation = max_valuation / 1000000
+  ),
+  type = table_output,
+  title = "Accelerator Company Performance: Summary Statistics.",
+  header = FALSE,
+  covariate.labels = if(knit_type == "latex"){acc_company_performance_verbose} else {acc_company_performance_verbose_html},
+  single.row = TRUE,
+  font.size = table_font_size,
+  column.sep.width = "1pt",
+  no.space = TRUE,
+  omit.summary.stat = c("p25", "p75"),
+  label = "tab:acccompanyperformancedesc",
+  table.placement = 'H'
+)
+ 
+```
+
+\setstretch{1.5}
+
+The range of company valuations is extremely wide with the lowest valued at the \$`r val_min`K mark and the largest firm being valued at \$`r val_max`B. Only `r exit`% of all analyzed firms had an exit of over \$1M, considering both Initial Public Offerings (IPOs) and Acquisitions. For the final analysis, total raised and valuation values were logged as both are highly skewed and provide a more explanatory analysis when examined this way. In fact, according to @cohen_design_2019, as per the literature, it is common to log these variables.
+
+### Typology {#typologyclassification}
+
+Through the trends disclosed by our initial data analysis, we intend to build upon @hausberg_business_2020's research and typological groundwork that identifies several dimensions through which incubators can be classified: support strategy, business strategy, incubatee focus, institutional mission, sponsor/partner focus, and multi-dimensional. We propose a three-step classification process gathering information from the support strategy dimension - according to the model by @bruneel_evolution_2012 -, the incubatee focus dimension - the model by @peters_role_2004 -, and the sponsor/partner focus dimension - merging all models analyzed by @hausberg_business_2020.
+
+@bruneel_evolution_2012 put forward a generational classification model with three segments. The first generation incubator targeted provisioning of turnkey office space, the second added shared business support services and the third revealed the value of knowledge and people networks.
+
+&nbsp;
+&nbsp;
+
+`r if(knit_type == "latex"){"\\begin{figure}[h!]"}`
+`r if(knit_type == "latex"){"\\begin{minipage}{0.25\\textwidth}"}`
+```{r echo=FALSE, results='asis'}
+
+step1 <- c(
+  "(1.1) First-Generation",
+  "(1.2) Second-Generation",
+  "(1.3) Third-Generation"
+)
+
+step2 <- c(
+  "(2.1) For-Profit",
+  "(2.2) Non-Profit"
+)
+
+step3 <- c(
+  "(3.1) University Incubators",
+  "(3.2) Corporate Incubators",
+  "(3.3) Government Incubators",
+  "(3.4) Independent Incubators"
+)
+
+if(knit_type == "latex"){
+  kable(
+    step1,
+    col.names = c("(1) Support Strategy"),
+    booktabs = TRUE
+  ) %>%
+    kable_styling(
+      font_size = table_font_size_kable,
+      full_width = TRUE,
+      latex_options = c(
+        "HOLD_position"
+      )
+    )
+}
+
+```
+`r if(knit_type == "latex"){"\\end{minipage}"}`
+`r if(knit_type == "latex"){"\\qquad"}`
+`r if(knit_type == "latex"){"\\begin{minipage}{0.05\\textwidth}"}`
+`r if(knit_type == "latex"){"$\\Rightarrow$"}`
+`r if(knit_type == "latex"){"\\end{minipage}"}`
+`r if(knit_type == "latex"){"\\begin{minipage}{0.25\\textwidth}"}`
+```{r echo=FALSE, results='asis'}
+
+if(knit_type == "latex"){
+  kable(
+    step2,
+    col.names = c("(2) Result Orientation"),
+    booktabs = TRUE
+  ) %>%
+    kable_styling(
+      font_size = table_font_size_kable,
+      full_width = TRUE,
+      latex_options = c(
+        "HOLD_position"
+      )
+    )
+}
+
+```
+`r if(knit_type == "latex"){"\\end{minipage}"}`
+`r if(knit_type == "latex"){"\\qquad"}`
+`r if(knit_type == "latex"){"\\begin{minipage}{0.05\\textwidth}"}`
+`r if(knit_type == "latex"){"$\\Rightarrow$"}`
+`r if(knit_type == "latex"){"\\end{minipage}"}`
+`r if(knit_type == "latex"){"\\begin{minipage}{0.25\\textwidth}"}`
+```{r echo=FALSE, results='asis'}
+
+if(knit_type == "latex"){
+  kable(
+    step3,
+    col.names = c("(3) Sponsors/Partners"),
+    booktabs = TRUE
+  ) %>%
+    kable_styling(
+      font_size = table_font_size_kable,
+      full_width = TRUE,
+      latex_options = c(
+        "HOLD_position"
+      )
+    )
+}
+
+```
+`r if(knit_type == "latex"){"\\end{minipage}"}`
+`r if(knit_type == "latex"){"\\caption{Incubator Typology Classification System.}"}`
+`r if(knit_type == "latex"){"\\label{typologyclassificationfig}"}`
+`r if(knit_type == "latex"){"\\end{figure}"}`
+
+```{r typologyclassificationfig, fig.cap="Incubator Typology Classification System.", out.width='95%', fig.align = 'center', echo=FALSE}
+
+if(knit_type == "html"){
+  knitr::include_graphics('./writing/figures/classification_system.png')
+}
+
+```
+
+&nbsp;
+
+&nbsp;
+
+Firstly, for the support strategy, this model is used to determine the concrete type of incubator:
+
+-   (1.1) first-generation with a focus on real estate,
+
+-   (1.2) second-generation with a focus on intangible assets,
+
+-   and (1.3) third-generation with a focus on the network.
+
+Secondly, applying @peters_role_2004 designation of:
+
+-   (2.1) for-profit incubator,
+
+-   And (2.2) non-profit, we achieve a classification accounting for the type of result coveted by the incubator.
+
+In line with the classification by @peters_role_2004, the third model includes:
+
+-   (3.1) university-based incubators as a broad indicator of the incubator's funding and financial support mechanisms.
+
+-   Having then identified the need for further classification as intrapreneurship efforts do not fit into any pre-established categories, a second typology of (3.2) corporate incubators is suggested following the literature. The reasoning for this approach lies in the studied differences between corporate and university-based incubators, which exist when comparing service provider, provided service type, and service receiver [@becker_corporate_2006].
+
+-   Through further investigation and with the collected dataset at hand, another category is added to the third model: (3.3) government incubators, where the main sponsor and backer of the program is a public institution. This statement is supported by @grimaldi_business_2005's model which proposes "regional public incubators" and @kuratko_small_1987 and @udell_are_1990 who suggest "publicly sponsored incubators".
+
+-   Even though it is not often in our dataset that incubators were found to be partner-less, many did not have one key institution or organization as a backer. Therefore, (3.4) independent accelerators are not edge cases and should be contemplated in this systemic approach. The complete system is described in Figure   `r if(knit_type == "latex"){"\\@ref(typologyclassificationfig)"} else {"\\@ref(fig:typologyclassificationfig)"}`.
+
+Although this model does not by itself configure a well- or ill-designed accelerator, it successfully depicts some of the trends surrounding the results described in this section. Expectedly, we consider all studied accelerators to match (1) support strategy (1.3) third-generation due to their provided mentorship and network: these two factors are part of the definition of accelerator and are the ones which more significantly distance them from their ancestor - the incubator. As for (2) results orientation and (3) sponsors/partners, results vary widely: all possible combinations were observed in the complete dataset. It is worth pointing out that (3.1) university incubators and (3.3) government incubators were found in fewer numbers (`r spons_acad`% and `r spons_gov`%, respectively), against other sponsor types which were present in over `r round(min(c(spons_corp, spons_inv)), -1)`% of our results.
+
+&nbsp;
+
+\onehalfspacing
+
+```{r, results="asis"}
+
+stargazer(
+  acc_spon_md_back_m1,
+  acc_spon_md_back_m2,
+  acc_spon_md_back_m3,
+  acc_spon_md_back_m4,
+  type = table_output,
+  title = "Accelerator Founding Sponsors and Accelerator Founding Managing Director Backgrounds.",
+  header = FALSE,
+  dep.var.labels = founding_sponsors_verbose,
+  covariate.labels = md_backgrounds_verbose,
+  single.row = TRUE,
+  font.size = table_font_size,
+  omit.stat = c("f", "adj.rsq", "ser", "aic"), 
+  column.sep.width = "1pt",
+  no.space = TRUE,
+  notes.align = "l",
+  notes = if(knit_type == "latex"){
+    c(
+      "This table utilizes probit regression to measure the association between ",
+      "accelerator founding sponsors and accelerator founding managing director ",
+      "backgrounds."
+    )
+  } else {
+    "This table utilizes probit regression to measure the association between accelerator founding sponsors and accelerator founding managing director backgrounds."
+  },
+  label = "tab:accsponmdback",
+  table.placement = 'H'
+)
+
+```
+
+\setstretch{1.5}
+
+## Statistical Analysis
+
+To further understand the mechanisms behind the relationship of startup acceleration and the several design elements that make up these programs, further statistical analysis and tests were conducted, namely linear regression (for correlation matrices), multiple linear regression, and probit regression.
+
+As previously theorized by @tripathi_startup_2019, accelerator performance can only be as good as the management and founders of the program. Third-generation incubators focus on networking and building their value proposition upon the connections made between the cohort and mentors. The relationship between founder backgrounds and accelerator sponsors is described in Table \@ref(tab:accsponmdback) where one interaction stands out from the rest: investor-sponsored accelerators are more likely to have founders with academic experience. This is the only statistically significant result with $\beta$ = `r round(summary(acc_spon_md_back_m4)$coefficients[5], 3)` and p-value < 0.05. The lack of significance for the other variables suggests that founder and managing director backgrounds do not play a large role in the type of sponsor attracted to and engaged with by the part of accelerators.
+
+&nbsp;
+
+\onehalfspacing
+
+```{r, results="asis"}
+
+stargazer(
+  md_back_acc_design_m1,
+  md_back_acc_design_m2,
+  md_back_acc_design_m3,
+  md_back_acc_design_m4,
+  type = table_output,
+  title = "Background of Accelerator Founding Managing Directors Backgrounds and Accelerator Program Design Variables.",
+  header = FALSE,
+  dep.var.labels = md_backgrounds_verbose,
+  covariate.labels = if(knit_type == "latex"){acc_design_choices_verbose} else {acc_design_choices_verbose_html},
+  single.row = TRUE,
+  font.size = table_font_size,
+  omit.stat = c("f", "adj.rsq", "ser", "aic"), 
+  column.sep.width = "1pt",
+  no.space = TRUE,
+  notes.align = "l",
+  notes = if(knit_type == "latex"){
+    c(
+      "This table utilizes multiple linear regression to measure the association ",
+      "between accelerator founding managing director backgrounds and accelerator ",
+      "program design choices."
+    )
+  } else {
+    "This table utilizes multiple linear regression to measure the association between accelerator founding managing director backgrounds and accelerator program design choices."
+  },
+  label = "tab:mdbackaccdesign",
+  table.placement = 'H'
+)
+
+```
+
+\setstretch{1.5}
+
+A better way to illustrate the impact of management and sponsorship on accelerated startups is to measure the relationship between these stakeholders and the design elements of the programs (Table \@ref(tab:mdbackaccdesign) and \@ref(tab:accsponaccdesign)). Furthering this demonstration is possible by relating these structural components to accelerator company performance which, for this research, is done as part of the answer to Hypothesis #1 in Section \@ref(hypothesis1).
+
+Analysing Table \@ref(tab:mdbackaccdesign), we observe that accelerators whose founders have prior investor experience tend to have a larger cohort size ($\beta$ = `r round(summary(md_back_acc_design_m1)$coefficients[2], 3)`, p-value < 0.05) with a focused composition ($\beta$ = `r round(summary(md_back_acc_design_m1)$coefficients[3], 3)`, p-value < 0.01) and provide a workspace for the teams ($\beta$ = `r round(summary(md_back_acc_design_m1)$coefficients[9], 3)`, p-value < 0.05). Since program graduation events are oftentimes showcase opportunities that bring together other entrepreneurs and investors to meet the participating startups, accelerator programs may disregard this opportunity in favour of the founder's network of investors from previous ventures, thus revealing a lower probability of these accelerators hosting a demo day ($\beta$ = `r round(summary(md_back_acc_design_m1)$coefficients[10], 3)`, p-value < 0.1). In this scenario, the amount of equity taken also increases, as does in every model with founder and managing director backgrounds as the dependent variable (including those with an academic background but for which there is no statistical significance). Managers and founders with prior experience as entrepreneurs and with an academic background are also more likely to prefer focused cohorts ($\beta$ = `r round(summary(md_back_acc_design_m2)$coefficients[3], 3)`, p-value < 0.05; $\beta$ = `r round(summary(md_back_acc_design_m4)$coefficients[3], 3)`, p-value < 0.05, respectively). Leveraging their expertise on a specific industry vertical, professionals can support startup founders with specific knowledge and mentorship as well as connections to other companies and organizations.
+
+Accelerators providing startups with physical workspace or a co-working office for the duration of the program are likely to have founders with corporate or investor experience. The proximity between managers and teams may be a contributing factor to the success of startups. Non-remote work environments are the norm for most individuals who have previously worked under the umbrella of a firm, therefore preferring this type of interaction ($\beta$ = `r round(summary(md_back_acc_design_m3)$coefficients[9], 3)`, p-value < 0.05) whereas founders with experience as entrepreneurs may consider remote work as a viable alternative. Accelerators founded by those with an academic background were found to have a higher likelihood of including a structured mentorship and education plan in their program ($\beta$ = `r round(summary(md_back_acc_design_m4)$coefficients[8], 3)`, p-value < 0.1). This relationship could be an indicator for the preference of professor-student interactions observed in academic environments.
+
+&nbsp;
+
+\onehalfspacing
+
+```{r, results="asis"}
+
+stargazer(
+  acc_spon_acc_design_m1,
+  acc_spon_acc_design_m2,
+  acc_spon_acc_design_m3,
+  acc_spon_acc_design_m4,
+  type = table_output,
+  title = "Accelerator Founding Sponsors and Accelerator Program Design Variables.",
+  header = FALSE,
+  dep.var.labels = founding_sponsors_verbose,
+  covariate.labels = if(knit_type == "latex"){acc_design_choices_verbose} else {acc_design_choices_verbose_html},
+  single.row = TRUE,
+  font.size = table_font_size,
+  omit.stat = c("f", "adj.rsq", "ser", "aic"), 
+  column.sep.width = "1pt",
+  no.space = TRUE,
+  notes.align = "l",
+  notes = if(knit_type == "latex"){
+    c(
+      "This table utilizes multiple linear regression to measure the association ",
+      "between accelerator founding sponsors and accelerator program design ",
+      "choices." 
+    )
+  } else {
+    "This table utilizes multiple linear regression to measure the association between accelerator founding sponsors and accelerator program design choices." 
+  },
+  label = "tab:accsponaccdesign",
+  table.placement = 'H'
+)
+
+```
+
+\setstretch{1.5}
+
+The linear model in Table \@ref(tab:accsponaccdesign) depicts the relationship between accelerator design elements and sponsors. Those sponsored by corporations, governments and investors look to be in favour of providing mentorship with external entities (individuals or organisations) ($\beta$ = `r round(summary(acc_spon_acc_design_m1)$coefficients[7], 3)`, p-value <0.001; $\beta$ = `r round(summary(acc_spon_acc_design_m2)$coefficients[7], 3)`, p-value < 0.05; $\beta$ = `r round(summary(acc_spon_acc_design_m4)$coefficients[7], 3)`, p-value < 0.01, respectively). Sponsorships often entail the participation of external stakeholders in the acceleration program timeline. This cooperation benefits all parties: accelerators provide a better and wider network of connections, increasing their value proposition; startups gain access to knowledge and experience; and the sponsoring entities foster innovation, intrapreneurship, research and development, and the opportunity to increase their portfolio with early-stage investments.
+
+Opposite to the previous model, accelerators with a focused cohort have a higher likelihood of being involved with investor sponsors ($\beta$ = `r round(summary(acc_spon_acc_design_m4)$coefficients[3], 3)`, p-value < 0.05). No connection was found between the amount of funding provided and the type of sponsor chosen by accelerators, leading us to believe the two variables are not connected and do not influence one another in the context of this model.
+
+\onehalfspacing
+
+\begin{minipage}{0.48\textwidth}
+```{r echo=FALSE, results='asis'}
+
+stargazer(
+  ill_designed_df %>% mutate(
+    funding_provided = funding_provided / 1000
+  ),
+  type = table_output,
+  title = "Ill-Designed Accelerator: Summary Statistics.",
+  header = FALSE,
+  covariate.labels = if(knit_type == "latex"){acc_design_choices_complete_verbose} else {acc_design_choices_complete_verbose_html},
+  single.row = TRUE,
+  font.size = "tiny",
+  column.sep.width = "1pt",
+  no.space = TRUE,
+  omit.summary.stat = c("n", "p25", "p75"),
+  label = "tab:illdesigneddf",
+  table.placement = 'H'
+)
+
+```
+\end{minipage}
+\qquad
+\begin{minipage}{0.45\textwidth}
+```{r echo=FALSE, results='asis'}
+
+stargazer(
+  well_designed_df %>% mutate(
+    funding_provided = funding_provided / 1000
+  ),
+  type = table_output,
+  title = "Well-Designed Accelerator: Summary Statistics.",
+  header = FALSE,
+  covariate.labels = if(knit_type == "latex"){acc_design_choices_complete_verbose} else {acc_design_choices_complete_verbose_html},
+  single.row = TRUE,
+  font.size = "tiny",
+  column.sep.width = "1pt",
+  no.space = TRUE,
+  omit.summary.stat = c("n", "p25", "p75"),
+  label = "tab:welldesigneddf",
+  table.placement = 'H'
+)
+
+```
+\end{minipage}
+
+&nbsp;
+
+&nbsp;
+
+```{r illwell, echo=FALSE}
+
+kable(
+  ill_well,
+  caption = "Ill- and Well-Designed Accelerator Program Design Variables.",
+  booktabs = TRUE,
+  align = "cc"
+) %>%
+  kable_styling(
+    font_size = table_font_size_kable,
+    full_width = TRUE,
+    latex_options = c(
+      "HOLD_position"
+    )
+  )
+
+```
+
+\setstretch{1.5}
+
+&nbsp;
+
+## Defining a Well-Designed Accelerator Program
+
+Our dataset allows us to merge knowledge about accelerator program design and startup performance indicators. Filtering this information, we achieve the purpose of this chapter: to find trends regarding which accelerator design elements produce the best outcome for startups and therefore correspond to a well-designed accelerator.
+
+To define an ill-designed accelerator program, we began by filtering the dataset for all startups that did not receive more than \$500K in the year after their acceleration program and those that did not have an exit of $1M or more. We then filtered all accelerators whose startups did not achieve values over the mean of the study group for both total raised and max valuation. Calculating the mean for each variable of these startups' accelerators, the outputs are revealed in Table \@ref(tab:illdesigneddf). The inverse filter was applied to the dataset to find the startups better corresponding to the success parameters, with their accelerator's design elements described in Table \@ref(tab:welldesigneddf). Inspecting the outputs, the next step was to construct an ill- and well-designed accelerator (Table \@ref(tab:illwell)) which could be input in the model later described in the test of hypothesis for Hypothesis #1 in Section \@ref(hypothesis1). Test results for this analysis are found in Hypothesis #2 in Section \@ref(hypothesis2). It is relevant to state that, even though we are choosing to use the words “well” and “ill” to refer to an acceleration program's design, we do so from the perspective of data.

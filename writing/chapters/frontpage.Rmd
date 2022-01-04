@@ -1,0 +1,24 @@
+\pagenumbering{gobble}
+
+```{r, echo=FALSE, fig.cap='', out.width='50%', fig.align='center'}
+knitr::include_graphics('./writing/figures/logo_catolica.png')
+```
+
+\begin{centering}
+\vfill
+\begin{spacing}{1}
+{\Huge\bf `r rmarkdown::metadata$title`}\\
+\vspace{1em}
+\parbox{28em}{\centering\Huge `r rmarkdown::metadata$subtitle`}
+\end{spacing}
+\vfill 
+{\LARGE\bf `r rmarkdown::metadata$author`}
+\vfill 
+\parbox{25em}{\centering\Large Dissertation written under the supervision of `r rmarkdown::metadata$supervisor`.} 
+\vfill 
+\parbox{38em}{\centering\Large Dissertation submitted in partial fulfilment of requirements for the `r rmarkdown::metadata$program`, at the Universidade Católica Portuguesa, `r rmarkdown::metadata$date`.}
+
+\end{centering}
+\clearpage
+\pagenumbering{roman}
+\setstretch{1.5}

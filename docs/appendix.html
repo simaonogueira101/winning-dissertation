@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>7 Appendix | Winning the Startup Game</title>
+<meta name="author" content="Simão Policarpo Nogueira">
+<meta name="description" content="7.1 Crunchbase Enterprise API Documentation The following tables include information from the documentation of Crunchbase’s Enterprise API (Crunchbase 2021a) and describe the structure of this...">
+<meta name="generator" content="bookdown 0.24.4 with bs4_book()">
+<meta property="og:title" content="7 Appendix | Winning the Startup Game">
+<meta property="og:type" content="book">
+<meta property="og:image" content="https://masters.policarponogueira.com/writing/figures/cover.jpg">
+<meta property="og:description" content="7.1 Crunchbase Enterprise API Documentation The following tables include information from the documentation of Crunchbase’s Enterprise API (Crunchbase 2021a) and describe the structure of this...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="7 Appendix | Winning the Startup Game">
+<meta name="twitter:description" content="7.1 Crunchbase Enterprise API Documentation The following tables include information from the documentation of Crunchbase’s Enterprise API (Crunchbase 2021a) and describe the structure of this...">
+<meta name="twitter:image" content="https://masters.policarponogueira.com/writing/figures/cover.jpg">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="helpers/bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="A Study on the Design of European Startup Accelerators">Winning the Startup Game</a>:
+        <small class="text-muted">A Study on the Design of European Startup Accelerators</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome!</a></li>
+<li><a class="" href="abstract.html">Abstract</a></li>
+<li><a class="" href="resumo.html">Resumo</a></li>
+<li><a class="" href="introduction.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li><a class="" href="literature-review.html"><span class="header-section-number">2</span> Accelewho?: A Literature Review</a></li>
+<li><a class="" href="research-methodology.html"><span class="header-section-number">3</span> Research Methodology</a></li>
+<li><a class="" href="analysis-of-results.html"><span class="header-section-number">4</span> Design Elements and Performance Indicators: An Analysis of Results</a></li>
+<li><a class="" href="conclusion-and-implications.html"><span class="header-section-number">5</span> Conclusion and Implications</a></li>
+<li><a class="" href="limitations-and-future-research.html"><span class="header-section-number">6</span> Limitations and Future Research</a></li>
+<li><a class="active" href="appendix.html"><span class="header-section-number">7</span> Appendix</a></li>
+<li><a class="" href="author-contacts.html"><span class="header-section-number">8</span> Author Contacts</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/simaonogueira101/winning-dissertation">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="appendix" class="section level1" number="7">
+<h1>
+<span class="header-section-number">7</span> Appendix<a class="anchor" aria-label="anchor" href="#appendix"><i class="fas fa-link"></i></a>
+</h1>
+<div id="crunchbasedocs" class="section level2" number="7.1">
+<h2>
+<span class="header-section-number">7.1</span> Crunchbase Enterprise API Documentation<a class="anchor" aria-label="anchor" href="#crunchbasedocs"><i class="fas fa-link"></i></a>
+</h2>
+<p>The following tables include information from the documentation of Crunchbase’s Enterprise API <span class="citation">(<a href="references.html#ref-crunchbase_documentation_2021" role="doc-biblioref">Crunchbase 2021a</a>)</span> and describe the structure of this same interface.</p>
+<p> </p>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:crunchlocation">Table 7.1: </span>Crunchbase: Location Data.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+Variable Name
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+location
+</td>
+<td style="text-align:left;width: 35em; ">
+Full location name (e.g. Denver, Colorado, United States, North America)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+location_identifiers
+</td>
+<td style="text-align:left;width: 35em; ">
+Globally unique id of this entity
+</td>
+</tr>
+</tbody>
+<tfoot><tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Request URL: <a href="https://api.crunchbase.com/api/v4/searches/locations/" class="uri">https://api.crunchbase.com/api/v4/searches/locations/</a>
+</td>
+</tr></tfoot>
+</table></div>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:crunchaccelerator">Table 7.2: </span>Crunchbase: Accelerator Data.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+Variable Name
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+identifier
+</td>
+<td style="text-align:left;width: 35em; ">
+Name of the Organization
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+description
+</td>
+<td style="text-align:left;width: 35em; ">
+Organization Description
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+category_groups
+</td>
+<td style="text-align:left;width: 35em; ">
+Superset of Industries (e.g. Software, Mobile, Health Care)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+demo_days
+</td>
+<td style="text-align:left;width: 35em; ">
+Whether an accelerator hosts any demo days
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+founder_identifiers
+</td>
+<td style="text-align:left;width: 35em; ">
+Founders of the organization
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+investor_type
+</td>
+<td style="text-align:left;width: 35em; ">
+This describes the type of investor this organization is (e.g. Angel, Fund of Funds, Venture Capital)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+location_identifiers
+</td>
+<td style="text-align:left;width: 35em; ">
+Where the organization is headquartered
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+program_duration
+</td>
+<td style="text-align:left;width: 35em; ">
+The duration of the Acceleration Program in number of weeks
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+program_type
+</td>
+<td style="text-align:left;width: 35em; ">
+The type of Accelerator Program (e.g. On-Site, Online)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+website
+</td>
+<td style="text-align:left;width: 35em; ">
+Link to homepage
+</td>
+</tr>
+</tbody>
+<tfoot><tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Request URL: <a href="https://api.crunchbase.com/api/v4/searches/organizations/" class="uri">https://api.crunchbase.com/api/v4/searches/organizations/</a>
+</td>
+</tr></tfoot>
+</table></div>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:crunchacceleratorfounder">Table 7.3: </span>Crunchbase: Accelerator Founder Data.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+Variable Name
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+identifier
+</td>
+<td style="text-align:left;width: 35em; ">
+First and last name of a Person
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+num_founded_organizations
+</td>
+<td style="text-align:left;width: 35em; ">
+Number of Organizations that the person founded
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+num_investments
+</td>
+<td style="text-align:left;width: 35em; ">
+Number of Investments the Individual has participated in
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+num_jobs
+</td>
+<td style="text-align:left;width: 35em; ">
+Number of jobs the individual has had
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+degrees
+</td>
+<td style="text-align:left;width: 35em; ">
+The academic degrees that the person has received
+</td>
+</tr>
+</tbody>
+<tfoot><tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Request URL: <a href="https://api.crunchbase.com/api/v4/entities/people/" class="uri">https://api.crunchbase.com/api/v4/entities/people/</a>
+</td>
+</tr></tfoot>
+</table></div>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:crunchacceleratorinvestment">Table 7.4: </span>Crunchbase: Accelerator Investment Data.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+Variable Name
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+identifier
+</td>
+<td style="text-align:left;width: 35em; ">
+First and last name of a Person
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+num_founded_organizations
+</td>
+<td style="text-align:left;width: 35em; ">
+Number of Organizations that the person founded
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+num_investments
+</td>
+<td style="text-align:left;width: 35em; ">
+Number of Investments the Individual has participated in
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+num_jobs
+</td>
+<td style="text-align:left;width: 35em; ">
+Number of jobs the individual has had
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+degrees
+</td>
+<td style="text-align:left;width: 35em; ">
+The academic degrees that the person has received
+</td>
+</tr>
+</tbody>
+<tfoot><tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Request URL: <a href="https://api.crunchbase.com/api/v4/searches/investments/" class="uri">https://api.crunchbase.com/api/v4/searches/investments/</a>
+</td>
+</tr></tfoot>
+</table></div>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:crunchstartup">Table 7.5: </span>Crunchbase: Startup Data.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+Variable Name
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+identifier
+</td>
+<td style="text-align:left;width: 35em; ">
+Name of the Organization
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+description
+</td>
+<td style="text-align:left;width: 35em; ">
+Organization Description
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+funding_stage
+</td>
+<td style="text-align:left;width: 35em; ">
+This field describes an organization’s most recent funding status (e.g. Early Stage Venture, Late Stage Venture, M&amp;A)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+funding_total
+</td>
+<td style="text-align:left;width: 35em; ">
+Total amount raised across all funding rounds
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+location_identifiers
+</td>
+<td style="text-align:left;width: 35em; ">
+Where the organization is headquartered
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+valuation
+</td>
+<td style="text-align:left;width: 35em; ">
+Latest post-money valuation of the organization
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+raised_investments
+</td>
+<td style="text-align:left;width: 35em; ">
+All investments received by the organization
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ipos
+</td>
+<td style="text-align:left;width: 35em; ">
+The organization’s initial public offering
+</td>
+</tr>
+</tbody>
+<tfoot><tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Request URL: <a href="https://api.crunchbase.com/api/v4/entities/organizations/" class="uri">https://api.crunchbase.com/api/v4/entities/organizations/</a>
+</td>
+</tr></tfoot>
+</table></div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="limitations-and-future-research.html"><span class="header-section-number">6</span> Limitations and Future Research</a></div>
+<div class="next"><a href="author-contacts.html"><span class="header-section-number">8</span> Author Contacts</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#appendix"><span class="header-section-number">7</span> Appendix</a></li>
+<li><a class="nav-link" href="#crunchbasedocs"><span class="header-section-number">7.1</span> Crunchbase Enterprise API Documentation</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/simaonogueira101/winning-dissertation/blob/master/index.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/simaonogueira101/winning-dissertation/edit/master/index.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Winning the Startup Game</strong>: A Study on the Design of European Startup Accelerators" was written by Simão Policarpo Nogueira. It was last built on January 5, 2022.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

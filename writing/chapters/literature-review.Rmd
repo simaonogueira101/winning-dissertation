@@ -1,0 +1,146 @@
+\clearpage
+
+# *Accelewho*?: A Literature Review {#literature-review}
+
+The concept of startup is just as sexy as it is complex - perhaps not the designation itself, but what it encompasses and how the media has portrayed it for as long as there have been garages in Silicon Valley. With the advent of technology, collaboration is not only easier but comes as a requirement for innovation and relevancy in an ever-evolving business world. Joint effort cooperation resulting from the systemic interaction between companies, investors, and other stakeholders - the Entrepreneurial Ecosystem -, paved the way for what we now know as startup incubators and trickled down to more structured incubation programs: startup accelerators. This dissertation and research efforts will focus on the structural elements of an acceleration program and how they impact and influence the outcome of graduated startups.
+
+
+## Defining Startup Incubator
+
+The incubator phenomenon has its roots in New York, 1959 [@lewis_does_2002]. Whereas nowadays entrepreneurs willingly build and design spaces to host multiple companies, the owner of this first incubator did it out of necessity: "Unable to find a tenant capable of leasing the entire facility, the developer opted to sublet subdivided partitions of the building" [@hackett_systematic_2004]. From thereon-out, the akin needs of the renting companies in terms of accounting, legal and other basic business support services made it so that this model could prove its relevancy and scale, finding slow growth in the 1960s and 1970s [@hackett_systematic_2004]. With the help of regulatory entities in the US that "recognized the importance of innovation and intellectual property rights protection" [@hackett_systematic_2004], the onset of academic and non-academic research being conducted on the same topic provided the right environment for a larger increase in the number of operating incubators in the 1980s. Still before the turn of the century (in the 1990s), hand-in-hand with the expansion of online business firms, startup incubators were the personification of the dream and romanticizing of Entrepreneurship and the Rockstar Entrepreneur. Even with the downfall of the global economy after the US stock market bubble in 2008, startup incubators still play a large role in the modern entrepreneurial ecosystem and economy [@hackett_systematic_2004; @hausberg_business_2020]. A further step in understanding startup accelerators is defining what precedes it: the incubator.
+
+> The incubator is "an enterprise that facilitates the early-stage development of firms by providing office space, shared services, and business assistance."
+>
+> [@hackett_systematic_2004]
+
+&nbsp;
+
+## Typology of Startup Incubators
+
+An area of research commonly approached by authors is the conceptual study of incubators and accelerators: for Hochberg, the "conceptual description of the accelerator model" and for Hackett and Dilts, "incubator configurations" [@hochberg_accelerating_2016; @hackett_systematic_2004]. Understanding the underlying characteristics of an incubator may provide information on its accelerator programs' potential outcomes. @hausberg_business_2020 conducted a co-citation analysis of literature, building on previous theories surrounding incubators and accelerators such as that of @hochberg_accelerating_2016 and the one proposed by @hackett_systematic_2004. Ultimately, @hausberg_business_2020 suggest a typological classification model of their own and identify the following research fields:
+
+> "(1) studies on origins, definitions, and typologies of incubators, (2) studies on the incubation process, and (3) studies on impact and performance."
+>
+> [@hausberg_business_2020]
+
+&nbsp;
+
+The authors also make the case that research on the first stream makes up a relevant share of available literature, therefore arguing for its contextual importance. In their study, work from other authors is grouped according to the foundation upon which their classification system lies. Since we are looking into the relationship between an accelerator program and its impact on a startup, the typological analysis should refer to the support strategy and reflect a focus on the incubatee (as in, the startup) -- two of the groups @hausberg_business_2020 mention in their research.
+
+The fast growth in the number of corporate incubators signals the need for further classification as intrapreneurship efforts do not fit into the pre-established categories. Moreover, the current belief that innovation is a requirement for sustained competitive advantage has fostered the startup culture inside larger, more established firms through the so-called intrapreneurship. These corporate incubators could be easily classified as for-profit, but this over-simplification would go against the often unclear financial benefits of these efforts and provides an opposing view to the inclusion of university-based incubators as a category - being that these are mainly non-profit but, in certain cases, through licensing of patented research and development, reap monetary benefits [@becker_corporate_2006; @shankar_accelerating_2019].
+
+> "In a corporate incubator the intentions and goals are aligned to the corporation's technology focus and time frame, meanwhile in university incubators these should be linked to how the university positions itself and what role the incubator plays within the university."
+>
+> [@becker_corporate_2006]
+
+&nbsp;
+
+From an historical point of view, the classification of incubators and their typology has also been analysed. Beginning with the first incubator in New York, @bruneel_evolution_2012 divide the lifespan of company incubation into three generations. The first-generation offered "office space and shared resources" in the form of reception, parking space and meeting rooms. The second-generation is characterised by the efforts placed in "coaching and training support" for incubated firms, with shared business support services in the fields of accounting, legal and marketing. Some of these second-generation incubators already met certain criteria used to define the one followed by it - some provide coaching in the form of training sessions and workshops -, but it is in the third-generation that knowledge transfer is most valued and where "access to technological, professional, and financial networks" becomes the norm.
+
+This dissertation will focus mainly on third-generation incubators due to their contemporary nature but will make no efforts to avoid any of the previously mentioned financial support mechanisms. We intend to remain open to broader definitions of both incubator and accelerator to ensure the coverage of all available programs. Having found a definition of incubator, we now move to construe the concept of startup accelerator in the following chapter.
+
+
+## Defining Startup Accelerator
+
+### A Brief History of Accelerators
+
+With the industry founding pioneers [Y Combinator](https://www.ycombinator.com) and [Techstars](https://www.techstars.com) originating in 2005 and 2007[^1], respectively, if the 1959's incubator birth is still a recent phenomenon, it is fair to assume a lot of research is still required for accelerators [@cohen_how_2013; @cohen_accelerating_2014; @cohen_design_2019]. The growth and proliferation of accelerators to over 2000 programs in 6 continents paired with the diversification to several industries has made it difficult to achieve a consensus in its conceptual definition. The impact of accelerators has also been the target of research but, due to a lack of available data, publications on this matter are scarce [@cohen_accelerating_2014]. Nonetheless, it is widely accepted that accelerators are capable of increasing the size of a new venture's network, helping with branding and legitimizing their operation from its early days [@bruneel_evolution_2012; @wise_impact_2014].
+
+[^1]: Fishback et al provide an earlier example of accelerator: [The Foundry](https://thefoundry.com), a medical device R&D and development firm founded in 1998 [@fishback_finding_2007]. Although The Foundry's model is similar to that of an accelerator as depicted in this dissertation, the program's structure does not respect this definition in full. Accelerators are typically short, fixed-term programs whereas in this case, the limits of these and other accelerator program variables are not well defined.
+
+### Setting a Clear Definition
+
+While “the definition of accelerator programs remains discordant” [@cohen_accelerating_2014], taking the first step with a metaphor similar to that of the chicken and egg - which came first? - can assist in deterministically distancing an incubator from an accelerator. Both historically and in the currently accepted typology, the incubator came before the accelerator - the latter being a subset of the first. @bruneel_evolution_2012 identify three generations of incubators with the third focusing mainly on providing access to networks of knowledge, resources, and contributing to the legitimacy of incubated firms. The first two generations took to a more direct interpretation of the definition of incubator, targeting real estate and intangible asset provisioning. Newer research conducted by @pauwels_understanding_2016 agrees with the aforementioned statements, identifying startup accelerators as “a new generation incubation model”. Likewise, the trend in research appears to be in line with both authors and provides grounds for the interpretation used in this dissertation, bringing us closer to a definition of the term. Nonetheless, researchers remain entangled in trying to find a standardised definition for accelerators. Not only are both terms (incubator and accelerator) sometimes used as synonyms [@hausberg_business_2020], this challenge also comes from their conceptual ambiguity and the fact that programs themselves adapt to the needs of a certain ecosystem and its stakeholders [@cohen_design_2019].
+
+What then is the definition of a startup accelerator? These programs are an activity promoted and organized within an incubator and not the institution that incubators have become. Accelerator programs and startup ecosystems have been shown to impact the process of idea validation [@tripathi_startup_2019], a contributing factor to the success or failure of startups [@nobel_companies_2011]. The faster an idea can be tested, the better. Accelerators assist recent firms in their product-market fit, customer segmentation, and resource procurement. They can be defined by their characteristic design elements - the ones which distinguish them from similar programs: limited duration, a specific number of participating startups [@cohen_how_2013], and a graduation event [@cohen_design_2019].
+
+> The accelerator is “a fixed-term, cohort-based program, including mentorship and educational components, that culminates in a public pitch event or demo day.”
+>
+> [@cohen_accelerating_2014]
+
+&nbsp;
+
+Some researchers point out that this definition should include another key element: accelerators “provide equity funds in addition to the space, networks and mentorship” [@wise_impact_2014]. A choice was made to not include this variable in our definition because not all accelerator business models under the umbrella of this study provide the same equity funding mechanism. Additionally, even though @cohen_accelerating_2014 state that “most accelerators take equity stakes in participating firms”, their decision to not include this topic in their accepted definition provides confidence in this judgment.
+
+
+## Measuring an Accelerator's Impact on Startups
+
+<!--
+Removed because this section does not provide more information, misses the
+target of accelerator elements' impact on startups and we need space
+ -->
+ 
+<!-- ### Accelerator's Impact on Startup Ecosystem Elements -->
+
+<!-- The perspective taken in analyzing an accelerator's impact on its cohort of startups follows an assessment of how these programs affect the eight major elements of a startup ecosystem: finance, demography, market, education, human capital, technology, entrepreneur, and support factors [@tripathi_insights_2019]. By understanding how accelerators influence each component we can evaluate their impact. Later on in this dissertation, we again make the case for accelerator impact through statistical, quantitative analysis. -->
+
+### Accelerator Management's Impact on the Startup {#reviewmanagementimpact}
+
+One factor which deeply contributes to understanding an accelerator's impact on a startup is its management. It is their responsibility to decide on the incubator's strategy and in turn determine which projects and startups become part of the cohort. Therefore, performance can only be as good as the management itself [@tripathi_insights_2019]. Moreover, having previously identified networking as the primary focus of third-generation incubators - the category which fits accelerators -, the management's ability to mobilize resources, build this network and manage relationships with other stakeholders (like investors, venture capitalists, and business angels) should have a direct impact on the outcome of startups.
+
+&nbsp;
+
+\onehalfspacing
+
+(ref:cohen-design-2019-citation) [@cohen_design_2019]
+
+(ref:hackett-systematic-2004-citation) [@hackett_systematic_2004]
+
+```{r programvars, echo=FALSE}
+
+program_variables <- c(
+  "Cohort",
+  "Funding and equity",
+  "Mentorship",
+  "Formal education",
+  "Workspace",
+  "Length of program and graduation event",
+  "Founder and managing director backgrounds and sponsors"
+)
+
+program_var_description <- c(
+  "The group of startups which participates at one time in the acceleration program, chosen according to some criteria.",
+  "As in funding provided to startups and equity taken by the accelerator as means of payment for the provided services and mentorship.",
+  '“A key component of many accelerator programs” (ref:cohen-design-2019-citation) and, alongside the corresponding network, a central piece to third-generation incubators.',
+  "A structured program made up of workshops, talks, and mentorship with industry experts and partners that all startups must go through to achieve a knowledge baseline.",
+  "One of the earliest forms of incubation (ref:hackett-systematic-2004-citation) and a source of “social and cultural impact of the program” (ref:cohen-design-2019-citation).",
+  "The length of the acceleration is adapted to the cohort composition and changes according to all other design variables. This graduation event often referred to as demo day, is a showcasing opportunity for startups looking for investment and taking their first steps after an intensive program.",
+  "Internal and external stakeholders whose presence and involvement add value to the program. These are usually expected to provide mentorship and, in the case of founders and managers, decide on the acceptance criteria for startups."
+)
+
+kable(
+  data.frame(program_variables, program_var_description),
+  caption = "Accelerator Program Design Variables.",
+  col.names = c("Variable Name", "Description"),
+  booktabs = TRUE,
+  linesep = "\\addlinespace"
+) %>%
+  kable_styling(
+    font_size = table_font_size_kable,
+    full_width = TRUE,
+    latex_options = c(
+      "HOLD_position"
+    )
+  ) %>%
+  column_spec(
+    2,
+    width = "35em"
+  )
+
+```
+
+\setstretch{1.5}
+
+### Accelerator Program Design Elements Impact on the Startup {#review-design-elements}
+
+Very early on in our research, we looked at ways to identify the most relevant publications surrounding incubation and acceleration. Taking advantage of the [Google Scholar](https://scholar.google.com/) search engine, we began by analyzing all top publications under the “Business, Economics & Management” category and the “Entrepreneurship & Innovation” sub-category. Sorting by the h5-index [@hirsch_index_2005], among others, we came across the [Research Policy journal](https://www.journals.elsevier.com/research-policy), classified as number one with h = 95.
+
+The paper “The design of startup accelerators” co-written by Cohen, Fehder, Hochberg, and Murray, published in 2019 by the Research Policy journal, has been cited 103 times. It not only studies the core features of an accelerator program (Table \@ref(tab:programvars)) by researching the USA ecosystem but also provides a well-structured statistical, quantitative analysis method that inspired reproduction for the European context. The method chosen by this group of researchers inspired the one used for this dissertation as they, like us, “seek to explore and act upon the impact of accelerators” [@cohen_design_2019].
+
+### Final Overview
+
+<!-- Although there is in fact room for further improvement on the understanding of the topic, the growth in the number of accelerators may serve as an indicator for their importance and so might the financial indicators of these programs. For example, one of the earliest corporate accelerators by tech giant Microsoft raised $3 billion through its accelerated projects. This statement may be tainted by the idea that corporate accelerators are "believed to differ in their motives, programs, and outcomes” when compared to independent startup accelerators [@shankar_accelerating_2019]. While this may be the case, third-generation incubators and their accelerator programs with broader service offerings have shown to have a positive impact on their startup cohorts which grow faster and achieve more successful exits [@bruneel_evolution_2012; @wise_impact_2014]. -->
+
+For the writing of this literature review, we analysed 18 papers, 15 of which are peer-reviewed. There's not a lot of research surrounding this topic, but the large majority accepts there is some form of impact of an accelerator on its cohort of startups [@cohen_how_2013; @pauwels_understanding_2016; @hausberg_business_2020]. A study by @hallen_accelerators_2020 reveals that startups who take part in acceleration programs are more likely to achieve significant funding and growth. This statement is especially relevant when the same remains true comparing graduated startups to those not accepted into these programs. @cohen_design_2019 identify “muted or even negative impacts of accelerators on startups” in their research. These authors list two papers whose results indicate these effects. As much as that may be the case for certain scenarios, further analysis of @gonzalez_effects_2018 studies on Start-Up Chile's ecosystem reveal that, even though the basic accelerator services (cash or equity and co-working space) do not put forward any improvements for startup success, the provided educational programs - a characteristic of third-generation incubators - did in fact show “significant increases in venture fundraising and scale”. Additionally, although statistical results in @yu_accelerators_2020 show “the odds of going out of business for accelerator companies over non-accelerator companies are 150% higher”, they hypothesise that accelerators might help reduce success unpredictability for startups, leading them to close sooner rather than continue operating without a market fit or at a loss. The underlying complexity surrounding terminology may be a contributing factor to the different perspectives taken on this same matter.
+
+Still, in line with the present-day data shortage on accelerated startups' results, it makes no sense to rule out the hypothesis that these null or negative impacts do not exist. An alternative is then to look at other mechanisms which may be responsible for the positive outcome of startups participating in acceleration programs. @hallen_accelerators_2020 put forward the possibility of sorting and signalling. The sorting mechanism is suggested as the match between two partners which together maximize each other's value capturing. This situation leaves “less-desirable partners to partner with others who are also less desirable” [@hallen_accelerators_2020]. The impact exists but does not come solely from the accelerator's design features: it is due to some pre-existing condition of the startup. The case being made for signalling is on the impact of the accelerator's connections to other partners (ones part of the entrepreneurial ecosystem, such as investors and other companies). These associations may serve as signals to other interested parties and act as “information pipes that efficiently disseminate information about a venture's quality” [@hallen_accelerators_2020]. Nonetheless, as previously identified, third-generation incubators focus particularly on networking and its value for a startup's development. All in all, even if not particularly straightforward, the value-creating relationship between accelerator and startup is apparent in all literature.

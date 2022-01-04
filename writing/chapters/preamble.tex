@@ -1,0 +1,28 @@
+\usepackage{blindtext} % for dummy text in the beta version
+\usepackage{setspace} % line spacing
+\usepackage{geometry} % margins, etc
+\geometry{margin=2.5cm}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\usepackage[nottoc]{tocbibind} % lof and lot in toc
+\usepackage{caption} % captions formatting
+\captionsetup{justification   = raggedright,
+              singlelinecheck = false,
+              format = hang,
+              labelfont = bf}
+\usepackage{tocloft} % lof and lot editing
+\renewcommand{\cftfigfont}{Figure }
+\renewcommand{\cfttabfont}{Table }
+\expandafter\def\expandafter\quote\expandafter{\quote\singlespacing} %single spacing in quotes
+\AtBeginDocument{\let\maketitle\relax}
+
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+\usepackage{dcolumn}
+
+% Avoid weird line and word breaks
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000

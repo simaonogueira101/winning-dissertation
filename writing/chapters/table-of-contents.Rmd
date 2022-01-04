@@ -1,0 +1,3 @@
+\clearpage{\hypersetup{linkcolor=black}\tableofcontents}
+\clearpage{\hypersetup{linkcolor=black}\listoffigures\listoftables}
+\clearpage\pagenumbering{arabic}\setcounter{page}{1}
