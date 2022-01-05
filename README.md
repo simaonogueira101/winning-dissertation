@@ -34,6 +34,23 @@ This project can be downloaded by cloning this git repository:
 
 or by [downloading the zip file.](https://github.com/simaonogueira101/winning-dissertation/archive/refs/heads/master.zip)
 
+&nbsp;
+
+After cloning the repository, if you already have access to the data submodule(s), run the following command:
+    
+    git submodule init
+    
+&nbsp;
+    
+If you have access to the `data-anonymized` submodule, run:
+
+    git submodule update -f --remote data-anonymized
+    
+If you have access to the `data-original` submodule, run:
+
+    git submodule update -f --remote data-original
+    
+
 ## Dependencies
 
 In order to run this code, you will require a local installation of [R](https://www.r-project.org). It is recommended that you use [RStudio](https://www.rstudio.com).
